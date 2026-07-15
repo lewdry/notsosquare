@@ -60,20 +60,11 @@ onMount(() => {
   window.addEventListener("pointerup", handleGlobalPointerUp);
   window.addEventListener("pointercancel", handleGlobalPointerCancel);
 
-  // Set viewport height on mobile to prevent address bar issues
-  const setVh = () => {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-  };
-  setVh();
-  window.addEventListener("resize", setVh);
-
   return () => {
     window.removeEventListener("resize", handleResize);
     window.removeEventListener("pointermove", handleGlobalPointerMove);
     window.removeEventListener("pointerup", handleGlobalPointerUp);
     window.removeEventListener("pointercancel", handleGlobalPointerCancel);
-    window.removeEventListener("resize", setVh);
   };
 });
 
@@ -121,7 +112,7 @@ function handleCloseCelebration() {
 }
 </script>
 
-<main class="h-[100dvh] w-full flex flex-col items-center justify-between px-4 py-2 bg-stone-100/50 overflow-hidden">
+<main class="app-shell w-full flex flex-col items-center justify-between px-4 py-2 bg-stone-100/50 overflow-hidden">
   <!-- Header -->
   <header class="w-full max-w-2xl mx-auto flex items-center justify-center text-center mb-2">
     <div class="flex items-center gap-1.5">
@@ -274,6 +265,14 @@ function handleCloseCelebration() {
 </main>
 
 <style>
+  /* Keep the app inside Safari's visible viewport while its toolbar is open. */
+  .app-shell {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100svh;
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+  }
+
   /* Confetti burst keyframes */
   @keyframes fall {
     0% {
