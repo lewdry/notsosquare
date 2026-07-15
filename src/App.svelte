@@ -128,7 +128,7 @@ function handleCloseCelebration() {
     </div>
   </header>
 
-  <div class="min-h-0 flex-1 w-full max-w-2xl mx-auto flex flex-col items-center gap-2">
+  <div class="w-full max-w-2xl mx-auto flex-none flex flex-col items-center gap-2">
     <div class="w-full">
       <DifficultySelector boardWidth={GRID_WIDTH * cellSize + 16} />
     </div>
@@ -178,7 +178,7 @@ function handleCloseCelebration() {
   </div>
 
   <!-- Footer Info -->
-  <footer class="w-full max-w-2xl mx-auto text-center mt-2 text-[10px] text-stone-400 select-none">
+  <footer class="w-full max-w-2xl mx-auto flex-none text-center mt-2 text-[10px] text-stone-400 select-none">
     By
     <a
       href="https://lewisdryburgh.com"
