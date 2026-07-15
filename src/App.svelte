@@ -26,11 +26,12 @@ let inventoryCellSize = $derived(
 
 onMount(() => {
   gameStore.connectStorage(window.localStorage);
-  windowWidth = window.innerWidth;
-  windowHeight = window.innerHeight;
+  const getViewportHeight = () => window.visualViewport?.height ?? window.innerHeight;
+  windowWidth = window.visualViewport?.width ?? window.innerWidth;
+  windowHeight = getViewportHeight();
   const handleResize = () => {
-    windowWidth = window.innerWidth;
-    windowHeight = window.innerHeight;
+    windowWidth = window.visualViewport?.width ?? window.innerWidth;
+    windowHeight = getViewportHeight();
   };
 
   const handleGlobalPointerMove = (e) => {
@@ -59,12 +60,14 @@ onMount(() => {
   window.addEventListener("pointermove", handleGlobalPointerMove);
   window.addEventListener("pointerup", handleGlobalPointerUp);
   window.addEventListener("pointercancel", handleGlobalPointerCancel);
+  window.visualViewport?.addEventListener("resize", handleResize);
 
   return () => {
     window.removeEventListener("resize", handleResize);
     window.removeEventListener("pointermove", handleGlobalPointerMove);
     window.removeEventListener("pointerup", handleGlobalPointerUp);
     window.removeEventListener("pointercancel", handleGlobalPointerCancel);
+    window.visualViewport?.removeEventListener("resize", handleResize);
   };
 });
 
@@ -125,7 +128,7 @@ function handleCloseCelebration() {
     </div>
   </header>
 
-  <div class="flex-1 w-full max-w-2xl mx-auto flex flex-col items-center gap-2">
+  <div class="min-h-0 flex-1 w-full max-w-2xl mx-auto flex flex-col items-center gap-2">
     <div class="w-full">
       <DifficultySelector boardWidth={GRID_WIDTH * cellSize + 16} />
     </div>
@@ -269,8 +272,16 @@ function handleCloseCelebration() {
   .app-shell {
     height: 100vh;
     height: 100dvh;
-    min-height: 100svh;
     padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+  }
+
+  /* A stable visible height prevents the game from extending below iOS Safari's
+     toolbar when the visual viewport is reported inconsistently. */
+  @media (max-width: 639px) {
+    .app-shell {
+      height: 100svh;
+      max-height: 100svh;
+    }
   }
 
   /* Confetti burst keyframes */
