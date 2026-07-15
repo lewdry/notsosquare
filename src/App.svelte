@@ -279,8 +279,9 @@ function handleCloseCelebration() {
      toolbar when the visual viewport is reported inconsistently. */
   @media (max-width: 639px) {
     .app-shell {
-      height: 100svh;
-      max-height: 100svh;
+      height: 90vh;
+      height: 90svh;
+      max-height: 90svh;
     }
   }
 
