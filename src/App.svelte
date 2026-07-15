@@ -129,13 +129,9 @@ function handleCloseCelebration() {
   </header>
 
   <div class="w-full max-w-2xl mx-auto flex-none flex flex-col items-center gap-2">
-    <div class="w-full">
-      <DifficultySelector boardWidth={GRID_WIDTH * cellSize + 16} />
-    </div>
-
     <div
       id="piece-inventory"
-      class="grid grid-cols-2 items-center justify-items-center gap-1 my-1 sm:flex-1 sm:content-center sm:gap-2"
+      class="order-1 sm:order-2 grid grid-cols-2 items-center justify-items-center gap-1 my-1 sm:flex-1 sm:content-center sm:gap-2"
       style="grid-template-columns: {isMobile ? '1fr' : `${sideColumnWidth}px auto ${sideColumnWidth}px`};"
     >
       <div class="order-2 col-span-2 hidden sm:order-1 sm:col-span-1 sm:block">
@@ -174,6 +170,10 @@ function handleCloseCelebration() {
           />
         </div>
       </div>
+    </div>
+
+    <div class="order-2 w-full sm:order-1">
+      <DifficultySelector boardWidth={GRID_WIDTH * cellSize + 16} />
     </div>
   </div>
 
