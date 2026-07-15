@@ -115,7 +115,7 @@ function handleCloseCelebration() {
 }
 </script>
 
-<main class="app-shell w-full flex flex-col items-center justify-between px-4 py-2 bg-stone-100/50 overflow-hidden">
+<main class="app-shell w-full flex flex-col items-center justify-between px-4 py-2 bg-stone-100/50 overflow-y-auto overflow-x-hidden">
   <!-- Header -->
   <header class="w-full max-w-2xl mx-auto flex items-center justify-center text-center mb-2">
     <div class="flex items-center gap-1.5">
@@ -273,15 +273,15 @@ function handleCloseCelebration() {
     height: 100vh;
     height: 100dvh;
     padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+    touch-action: pan-y;
   }
 
   /* A stable visible height prevents the game from extending below iOS Safari's
      toolbar when the visual viewport is reported inconsistently. */
   @media (max-width: 639px) {
     .app-shell {
-      height: 90vh;
-      height: 90svh;
-      max-height: 90svh;
+      height: 100svh;
+      max-height: 100svh;
     }
   }
 
