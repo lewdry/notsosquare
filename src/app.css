@@ -3,8 +3,27 @@
   themes: cupcake --default;
 }
 
+@plugin "daisyui/theme" {
+  name: "cupcake";
+  default: true;
+  --color-primary: var(--color-neutral);
+  --color-primary-content: var(--color-neutral-content);
+}
+
 @theme {
   --font-sans: 'Outfit', 'Inter', system-ui, sans-serif;
+}
+
+/* This is a touch-first game, not a document: prevent press-and-hold from
+   selecting text, showing Safari callouts, or starting native image drags. */
+*,
+*::before,
+*::after {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 /* General Layout & Page defaults */

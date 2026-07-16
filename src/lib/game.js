@@ -51,38 +51,38 @@ export const TETROMINOES = {
 
 export const PIECE_THEMES = {
   I: {
-    bg: "bg-info border-info/40 text-info-content",
-    color: "oklch(var(--in))",
+    bg: "bg-[#268bd2] text-[#002b36]",
+    color: "#268bd2",
     name: "I-Piece",
   },
   O: {
-    bg: "bg-warning border-warning/40 text-warning-content",
-    color: "oklch(var(--wa))",
+    bg: "bg-[#b58900] text-[#002b36]",
+    color: "#b58900",
     name: "O-Piece",
   },
   T: {
-    bg: "bg-secondary border-secondary/40 text-secondary-content",
-    color: "oklch(var(--s))",
+    bg: "bg-[#6c71c4] text-[#fdf6e3]",
+    color: "#6c71c4",
     name: "T-Piece",
   },
   L: {
-    bg: "bg-accent border-accent/40 text-accent-content",
-    color: "oklch(var(--a))",
+    bg: "bg-[#cb4b16] text-[#fdf6e3]",
+    color: "#cb4b16",
     name: "L-Piece",
   },
   J: {
-    bg: "bg-primary border-primary/40 text-primary-content",
-    color: "oklch(var(--p))",
+    bg: "bg-[#2aa198] text-[#002b36]",
+    color: "#2aa198",
     name: "J-Piece",
   },
   S: {
-    bg: "bg-success border-success/40 text-success-content",
-    color: "oklch(var(--su))",
+    bg: "bg-[#859900] text-[#002b36]",
+    color: "#859900",
     name: "S-Piece",
   },
   Z: {
-    bg: "bg-error border-error/40 text-error-content",
-    color: "oklch(var(--er))",
+    bg: "bg-[#dc322f] text-[#fdf6e3]",
+    color: "#dc322f",
     name: "Z-Piece",
   },
 };

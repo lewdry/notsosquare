@@ -9,11 +9,26 @@ const labels = {
   normal: "Normal",
   hard: "Hard",
 };
+
+function confirmDiscard(action) {
+  if (gameStore.placedPieces.length === 0) return true;
+  return window.confirm(`${action}? Your current placement will be lost.`);
+}
+
+function resetBoard() {
+  if (!confirmDiscard("Reset this board")) return;
+  gameStore.initLevel({ randomizeLevel: false });
+}
+
+function skipPuzzle() {
+  if (!confirmDiscard("Skip this puzzle")) return;
+  gameStore.initLevel();
+}
 </script>
 
 <section class="mx-auto px-3 py-2 flex flex-col gap-2" style="width: {boardWidth}px;">
   <div class="flex items-center justify-between text-[11px] font-bold text-stone-500 px-1">
-    <span>Puzzle #{gameStore.puzzleNumber} of {gameStore.totalPuzzleCount}</span>
+    <span>{labels[gameStore.difficulty]} · Puzzle #{gameStore.puzzleNumber}</span>
     <span>Hints {gameStore.hintsUsed}</span>
   </div>
 
@@ -35,10 +50,17 @@ const labels = {
   <div class="flex justify-center gap-2">
     <button
       type="button"
-      onclick={() => gameStore.initLevel()}
+      onclick={resetBoard}
       class="btn btn-ghost btn-sm h-8 min-h-8 font-bold text-stone-600 border border-stone-200/50 hover:bg-stone-100"
     >
-      New Puzzle
+      Reset Board
+    </button>
+    <button
+      type="button"
+      onclick={skipPuzzle}
+      class="btn btn-ghost btn-sm h-8 min-h-8 font-bold text-stone-600 border border-stone-200/50 hover:bg-stone-100"
+    >
+      Skip Puzzle
     </button>
     <button
       type="button"

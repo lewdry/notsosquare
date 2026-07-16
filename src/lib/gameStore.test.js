@@ -34,6 +34,15 @@ describe("GameStore drag transitions", () => {
     store.initLevel({ randomizeLevel: false });
   });
 
+  it("numbers the easiest catalogue level first while retaining stable level IDs", () => {
+    expect(store.levelId).toBe(169);
+    expect(store.puzzleNumber).toBe(34);
+
+    store.currentLevelIndex = store.levelsList.length - 1;
+    expect(store.levelId).toBe(202);
+    expect(store.puzzleNumber).toBe(1);
+  });
+
   it("places an inventory piece using the grabbed block as its anchor", () => {
     const placement = findSolution(store.blockades)[0];
     const grabbedCell = PIECE_ORIENTATIONS[placement.id][placement.rotationIndex][0];
@@ -161,12 +170,12 @@ describe("GameStore drag transitions", () => {
     store.handleWin();
 
     expect(store.completionStatus).toBe("Completed");
-    expect(store.progress.completed[store.puzzleNumber].bestHints).toBe(2);
+    expect(store.progress.completed[store.levelId].bestHints).toBe(2);
     expect(storage.setItem).toHaveBeenCalled();
 
     const restoredStore = new GameStore();
     restoredStore.connectStorage(storage);
-    expect(restoredStore.progress.completed[store.puzzleNumber].bestHints).toBe(2);
+    expect(restoredStore.progress.completed[store.levelId].bestHints).toBe(2);
   });
 
   it("clears hint feedback but retains the usage count after a move", () => {

@@ -60,26 +60,11 @@ const previewCells = $derived.by(() => {
           style="
             width: {cellSize - 4}px;
             height: {cellSize - 4}px;
-            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.04);
           "
         >
-          <!-- Blocking pegs use the same tactile square treatment as pieces. -->
+          <!-- Flat, round pegs distinguish permanent blockers from play pieces. -->
           {#if blocked}
-            <div
-              class="relative w-full h-full rounded-lg bg-stone-700 border-2 border-stone-800 shadow-sm"
-              style="
-                box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4),
-                            inset 0 -2px 4px rgba(0, 0, 0, 0.15);
-              "
-            >
-              <div
-                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-35 bg-current"
-                style="width: 25%; height: 25%;"
-              ></div>
-            </div>
-          {:else if !isPreview}
-            <!-- Subtle cell center dot to aid alignment alignment -->
-            <div class="w-1.5 h-1.5 bg-stone-300/60"></div>
+            <div class="blockade-peg" aria-label="Blocked cell"></div>
           {/if}
         </div>
       {/each}
@@ -136,3 +121,17 @@ const previewCells = $derived.by(() => {
     </div>
   {/if}
 </div>
+
+<style>
+  .blockade-peg {
+    position: relative;
+    width: 68%;
+    aspect-ratio: 1;
+    border: 2px solid rgb(41 37 36);
+    border-radius: 999px;
+    background: rgb(87 83 78);
+    outline: 1px solid rgb(255 255 255 / 0.45);
+    outline-offset: 2px;
+  }
+
+</style>

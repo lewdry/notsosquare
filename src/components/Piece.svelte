@@ -28,6 +28,34 @@ function hasBlock(r, c) {
   return shape.some(([sr, sc]) => sr === r && sc === c);
 }
 
+// Round a corner only when it lies on the piece's outer boundary, so adjacent
+// cells join seamlessly (classic Tetris look) while the outline stays soft.
+// A corner is rounded when at least one orthogonal neighbour is empty (keeps
+// straight edges gently scalloped) AND the diagonal cell is empty. When the
+// diagonal is filled the corner sits inside a concave notch, so we keep it
+// square to avoid the spiky point where two rounded cells meet.
+const CORNER_DIRS = {
+  tl: { orth: [[-1, 0], [0, -1]], diag: [-1, -1] },
+  tr: { orth: [[-1, 0], [0, 1]], diag: [-1, 1] },
+  bl: { orth: [[1, 0], [0, -1]], diag: [1, -1] },
+  br: { orth: [[1, 0], [0, 1]], diag: [1, 1] },
+};
+function cornerRadius(r, c, corner) {
+  const { orth, diag } = CORNER_DIRS[corner];
+  const n1Empty = !hasBlock(r + orth[0][0], c + orth[0][1]);
+  const n2Empty = !hasBlock(r + orth[1][0], c + orth[1][1]);
+  const diagEmpty = !hasBlock(r + diag[0], c + diag[1]);
+  return (n1Empty || n2Empty) && diagEmpty ? "min(7px, 20%)" : "0";
+}
+function cellRadius(r, c) {
+  return [
+    cornerRadius(r, c, "tl"),
+    cornerRadius(r, c, "tr"),
+    cornerRadius(r, c, "br"),
+    cornerRadius(r, c, "bl"),
+  ].join(" ");
+}
+
 // Pointer state for click vs drag
 let isPointerDown = false;
 let dragStarted = false;
@@ -121,7 +149,7 @@ function handleDoubleClick() {
   ondblclick={handleDoubleClick}
 >
   <div
-    class="grid gap-[2px] absolute"
+    class="grid gap-0 absolute"
     style="
       width: {cols * cellSize}px;
       height: {rows * cellSize}px;
@@ -139,21 +167,13 @@ function handleDoubleClick() {
             data-block
             data-r={r}
             data-c={c}
-            class="relative rounded-lg shadow-sm border-2 transition-colors duration-150 {theme.bg}"
+            class="piece-cell relative overflow-hidden transition-colors duration-150 {theme.bg}"
             style="
-              width: {cellSize - 2}px;
-              height: {cellSize - 2}px;
-              border-radius: min(6px, 18%);
-              box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), 
-                          inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+              width: {cellSize}px;
+              height: {cellSize}px;
+              border-radius: {cellRadius(r, c)};
             "
-          >
-            <!-- Sleek internal peg circle for tactile look -->
-            <div
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-35 bg-current"
-              style="width: 25%; height: 25%;"
-            ></div>
-          </div>
+          ></div>
         {:else}
           <div class="w-full h-full bg-transparent"></div>
         {/if}
@@ -167,4 +187,14 @@ function handleDoubleClick() {
     /* Improve mobile touch responsiveness */
     -webkit-tap-highlight-color: transparent;
   }
+
+  /* A crisp printed-tile treatment keeps the pieces bright without the old
+     inset-shadow, toy-block appearance. */
+  .piece-cell {
+    border: 1px solid rgb(255 255 255 / 0.42);
+    outline: 1px solid rgb(28 25 23 / 0.1);
+    outline-offset: -1px;
+    background-image: linear-gradient(135deg, rgb(255 255 255 / 0.22) 0 1px, transparent 1px 52%);
+  }
+
 </style>

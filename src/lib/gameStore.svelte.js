@@ -82,8 +82,16 @@ export class GameStore {
     return checkWinCondition(this.placedPieces, this.blockades);
   }
 
-  get puzzleNumber() {
+  // Stable level ID for persistence. It intentionally stays tied to the source
+  // catalogue even when the player-facing puzzle sequence is reordered.
+  get levelId() {
     return this.activeLevel?.id || 0;
+  }
+
+  // The catalogue is stored hardest-to-easiest, so present its reverse order:
+  // puzzle 1 is the easiest and the final number is the hardest.
+  get puzzleNumber() {
+    return this.levelId ? this.totalPuzzleCount - this.levelId + 1 : 0;
   }
 
   get totalPuzzleCount() {
@@ -92,7 +100,7 @@ export class GameStore {
 
   get completionStatus() {
     if (this.completionKind === "completed") return "Completed";
-    if (this.progress.completed[this.puzzleNumber]) return "Completed before";
+    if (this.progress.completed[this.levelId]) return "Completed before";
     if (this.placedPieces.length > 0 || this.hintsUsed > 0) return "In progress";
     return "Not completed";
   }
@@ -186,9 +194,9 @@ export class GameStore {
   handleWin() {
     if (this.showWinCelebration) return;
     this.completionKind = "completed";
-    const previous = this.progress.completed[this.puzzleNumber];
+    const previous = this.progress.completed[this.levelId];
     const bestHints = previous ? Math.min(previous.bestHints, this.hintsUsed) : this.hintsUsed;
-    this.progress.completed[this.puzzleNumber] = {
+    this.progress.completed[this.levelId] = {
       bestHints,
       completedAt: new Date().toISOString(),
     };

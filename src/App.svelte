@@ -143,8 +143,11 @@ function handleCloseCelebration() {
         />
       </div>
 
-      <div class="order-1 col-span-2 flex justify-center sm:order-2 sm:col-span-1">
+      <div class="order-1 col-span-2 flex flex-col items-center sm:order-2 sm:col-span-1">
         <Board {cellSize} />
+        <p class="mt-1 text-center text-[10px] font-semibold text-stone-500 select-none">
+          Drag to move · tap to rotate · double-tap to return
+        </p>
       </div>
 
       <div class="order-3 hidden sm:block">
@@ -252,7 +255,7 @@ function handleCloseCelebration() {
           Congratulations!
         </h2>
         <p class="text-stone-500 text-sm mt-2 mb-5 px-2">
-          You packed puzzle #{gameStore.puzzleNumber} perfectly with {gameStore.hintsUsed}
+          You packed puzzle #{gameStore.puzzleNumber} with {gameStore.hintsUsed}
           {gameStore.hintsUsed === 1 ? "hint" : "hints"}.
         </p>
         
