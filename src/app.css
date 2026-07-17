@@ -35,7 +35,9 @@ body {
   font-family: var(--font-sans);
   background-color: #faf7f5; /* base-100 for Cupcake theme */
   color: #291334; /* neutral / text color for Cupcake */
-  overflow-x: hidden;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
   /* Prevent scrolling on mobile while dragging */
   touch-action: none;
 }

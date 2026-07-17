@@ -56,18 +56,18 @@ export const PIECE_THEMES = {
     name: "I-Piece",
   },
   O: {
-    bg: "bg-[#b58900] text-[#002b36]",
-    color: "#b58900",
+    bg: "bg-[#d6a600] text-[#002b36]",
+    color: "#d6a600",
     name: "O-Piece",
   },
   T: {
-    bg: "bg-[#6c71c4] text-[#fdf6e3]",
-    color: "#6c71c4",
+    bg: "bg-[#8b5fc7] text-[#fdf6e3]",
+    color: "#8b5fc7",
     name: "T-Piece",
   },
   L: {
-    bg: "bg-[#cb4b16] text-[#fdf6e3]",
-    color: "#cb4b16",
+    bg: "bg-[#e67e22] text-[#fdf6e3]",
+    color: "#e67e22",
     name: "L-Piece",
   },
   J: {
