@@ -6,7 +6,6 @@ import DifficultySelector from "./components/DifficultySelector.svelte";
 import Inventory from "./components/Inventory.svelte";
 import Piece from "./components/Piece.svelte";
 import { isClientPointInsideRect } from "./lib/dragGeometry.js";
-import { GRID_WIDTH } from "./lib/game.js";
 
 // Keep the board and both piece trays on one horizontal line at every viewport size.
 let windowWidth = $state(500);
@@ -23,6 +22,8 @@ let inventorySlotSize = $derived(
 let inventoryCellSize = $derived(
   Math.max(10, Math.min(cellSize * 0.6, (inventorySlotSize - 4) / 4)),
 );
+let leftInventoryIds = $derived(gameStore.isNoIMode ? ["T", "O", "J"] : ["T", "O", "J", "L"]);
+let rightInventoryIds = $derived(gameStore.isNoIMode ? ["L", "Z", "S"] : ["I", "Z", "S"]);
 
 onMount(() => {
   gameStore.connectStorage(window.localStorage);
@@ -119,11 +120,17 @@ function handleCloseCelebration() {
   <!-- Header -->
   <header class="w-full max-w-2xl mx-auto flex items-center justify-center text-center mb-2">
     <div class="flex items-center gap-1.5">
-      <div class="w-6 h-6 bg-neutral flex items-center justify-center text-white font-black text-base shadow-md">
+      <button
+        type="button"
+        class="w-6 h-6 bg-neutral flex items-center justify-center text-white font-black text-base shadow-md cursor-pointer"
+        onclick={() => gameStore.toggleGameMode()}
+        aria-label="Toggle No I Squared mode"
+        title="Toggle No I Squared mode"
+      >
         Π
-      </div>
+      </button>
       <h1 class="text-2xl leading-none font-black tracking-tight text-neutral uppercase">
-        Notsosquare
+        {gameStore.isNoIMode ? "Sosquare" : "Notsosquare"}
       </h1>
     </div>
   </header>
@@ -136,7 +143,7 @@ function handleCloseCelebration() {
     >
       <div class="order-2 col-span-2 hidden sm:order-1 sm:col-span-1 sm:block">
         <Inventory
-          pieceIds={["T", "O", "J", "L"]}
+          pieceIds={leftInventoryIds}
           stacked
           {inventoryCellSize}
           slotSize={inventorySlotSize}
@@ -152,7 +159,7 @@ function handleCloseCelebration() {
 
       <div class="order-3 hidden sm:block">
         <Inventory
-          pieceIds={["I", "Z", "S"]}
+          pieceIds={rightInventoryIds}
           stacked
           {inventoryCellSize}
           slotSize={inventorySlotSize}
@@ -162,12 +169,12 @@ function handleCloseCelebration() {
       <div class="order-4 col-span-2 sm:hidden">
         <div class="flex flex-col items-center gap-1">
           <Inventory
-            pieceIds={["T", "O", "J", "L"]}
+            pieceIds={leftInventoryIds}
             {inventoryCellSize}
             slotSize={inventorySlotSize}
           />
           <Inventory
-            pieceIds={["I", "Z", "S"]}
+            pieceIds={rightInventoryIds}
             {inventoryCellSize}
             slotSize={inventorySlotSize}
           />
@@ -175,8 +182,8 @@ function handleCloseCelebration() {
       </div>
     </div>
 
-    <div class="order-2 w-full sm:order-1">
-      <DifficultySelector boardWidth={GRID_WIDTH * cellSize + 16} />
+    <div class="order-2 w-full sm:order-3">
+      <DifficultySelector boardWidth={gameStore.gridWidth * cellSize + 16} />
     </div>
   </div>
 
@@ -255,7 +262,7 @@ function handleCloseCelebration() {
           Congratulations!
         </h2>
         <p class="text-stone-500 text-sm mt-2 mb-5 px-2">
-          You packed puzzle #{gameStore.puzzleNumber} with {gameStore.hintsUsed}
+          You packed the puzzle with {gameStore.hintsUsed}
           {gameStore.hintsUsed === 1 ? "hint" : "hints"}.
         </p>
         

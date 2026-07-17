@@ -27,11 +27,7 @@ function skipPuzzle() {
 </script>
 
 <section class="mx-auto px-3 py-2 flex flex-col gap-2" style="width: {boardWidth}px;">
-  <div class="flex items-center justify-between text-[11px] font-bold text-stone-500 px-1">
-    <span>{labels[gameStore.difficulty]} · Puzzle #{gameStore.puzzleNumber}</span>
-    <span>Hints {gameStore.hintsUsed}</span>
-  </div>
-
+  {#if !gameStore.isNoIMode}
   <div class="join w-full" aria-label="Select difficulty">
     {#each DIFFICULTIES as difficulty}
       <button
@@ -46,6 +42,7 @@ function skipPuzzle() {
       </button>
     {/each}
   </div>
+  {/if}
 
   <div class="flex justify-center gap-2">
     <button

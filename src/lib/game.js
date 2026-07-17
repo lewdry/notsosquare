@@ -1,8 +1,12 @@
 import levels from "../../levels.json";
+import noILevels from "../../levels_5x5_1peg_noI.json";
 
 export const GRID_WIDTH = 5;
 export const GRID_HEIGHT = 6;
 export const GRID_SIZE = GRID_WIDTH * GRID_HEIGHT;
+export const NO_I_GRID_HEIGHT = 5;
+export const STANDARD_PIECE_IDS = ["I", "O", "T", "L", "J", "S", "Z"];
+export const NO_I_PIECE_IDS = ["O", "T", "L", "J", "S", "Z"];
 
 export const TETROMINOES = {
   I: [
@@ -125,7 +129,8 @@ export const DIFFICULTIES = ["easy", "normal", "hard"];
  * Easy puzzles have more than 13 solutions, normal puzzles have 4–12,
  * and hard puzzles have 1–3.
  */
-export function getLevelsByDifficulty(difficulty) {
+export function getLevelsByDifficulty(difficulty, mode = "standard") {
+  if (mode === "no-i") return noILevels;
   switch (difficulty) {
     case "easy":
       return levels.filter((lvl) => lvl.solutionCount > 13);
@@ -142,16 +147,17 @@ export function getLevelsByDifficulty(difficulty) {
  * Find every complete tiling for a board with the supplied blockade pegs.
  * Each solution contains placements compatible with Piece.svelte.
  */
-export function findSolutions(blockades) {
+export function findSolutions(blockades, mode = "standard") {
+  const gridHeight = mode === "no-i" ? NO_I_GRID_HEIGHT : GRID_HEIGHT;
+  const pieceIds = mode === "no-i" ? NO_I_PIECE_IDS : STANDARD_PIECE_IDS;
   const occupied = new Set(blockades.map(([r, c]) => `${r},${c}`));
-  const pieceIds = Object.keys(PIECE_ORIENTATIONS);
   const solutions = [];
 
   function canPlace(shape, row, col) {
     return shape.every(([dr, dc]) => {
       const r = row + dr;
       const c = col + dc;
-      return r >= 0 && r < GRID_HEIGHT && c >= 0 && c < GRID_WIDTH && !occupied.has(`${r},${c}`);
+      return r >= 0 && r < gridHeight && c >= 0 && c < GRID_WIDTH && !occupied.has(`${r},${c}`);
     });
   }
 
@@ -164,7 +170,7 @@ export function findSolutions(blockades) {
   }
 
   function findFirstEmptyCell() {
-    for (let row = 0; row < GRID_HEIGHT; row++) {
+    for (let row = 0; row < gridHeight; row++) {
       for (let col = 0; col < GRID_WIDTH; col++) {
         if (!occupied.has(`${row},${col}`)) return [row, col];
       }
@@ -206,8 +212,8 @@ export function findSolutions(blockades) {
  * Find one complete tiling for a board with the supplied blockade pegs.
  * Returns placements compatible with Piece.svelte, or null when unsolvable.
  */
-export function findSolution(blockades) {
-  return findSolutions(blockades)[0] || null;
+export function findSolution(blockades, mode = "standard") {
+  return findSolutions(blockades, mode)[0] || null;
 }
 
 /**
@@ -221,7 +227,16 @@ export function isBlockade(r, c, blockades) {
  * Validates whether a piece can be placed at the given row, col on the board
  * without overlapping blockades, going out of bounds, or overlapping other placed pieces
  */
-export function validatePlacement(pieceId, row, col, rotationIndex, blockades, placedPieces) {
+export function validatePlacement(
+  pieceId,
+  row,
+  col,
+  rotationIndex,
+  blockades,
+  placedPieces,
+  mode = "standard",
+) {
+  const gridHeight = mode === "no-i" ? NO_I_GRID_HEIGHT : GRID_HEIGHT;
   const rotations = PIECE_ORIENTATIONS[pieceId];
   if (!rotations) return { valid: false, reason: "Invalid piece ID" };
 
@@ -233,7 +248,7 @@ export function validatePlacement(pieceId, row, col, rotationIndex, blockades, p
     const c = col + dc;
 
     // Bounds check
-    if (r < 0 || r >= GRID_HEIGHT || c < 0 || c >= GRID_WIDTH) {
+    if (r < 0 || r >= gridHeight || c < 0 || c >= GRID_WIDTH) {
       return { valid: false, reason: "Out of bounds" };
     }
 
@@ -271,8 +286,9 @@ export function validatePlacement(pieceId, row, col, rotationIndex, blockades, p
  * Since the grid is 6x5 (30 cells), blockades cover 2 cells, and 7 tetrominoes cover 28 cells.
  * If 7 pieces are placed and all placements are valid, the board is solved.
  */
-export function checkWinCondition(placedPieces, blockades) {
-  if (placedPieces.length !== 7) return false;
+export function checkWinCondition(placedPieces, blockades, mode = "standard") {
+  const pieceIds = mode === "no-i" ? NO_I_PIECE_IDS : STANDARD_PIECE_IDS;
+  if (placedPieces.length !== pieceIds.length) return false;
 
   // Verify each piece placement is valid relative to others and blockades
   for (let i = 0; i < placedPieces.length; i++) {
@@ -285,6 +301,7 @@ export function checkWinCondition(placedPieces, blockades) {
       piece.rotationIndex,
       blockades,
       otherPieces,
+      mode,
     );
     if (!result.valid) return false;
   }

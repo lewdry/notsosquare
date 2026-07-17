@@ -1,5 +1,5 @@
 <script>
-import { GRID_HEIGHT, GRID_WIDTH, isBlockade } from "../lib/game.js";
+import { isBlockade } from "../lib/game.js";
 import { gameStore } from "../lib/gameStore.svelte.js";
 import Piece from "./Piece.svelte";
 
@@ -28,8 +28,8 @@ const previewCells = $derived.by(() => {
   id="puzzle-board"
   class="relative select-none border-4 border-stone-300 bg-stone-200/50 shadow-inner p-2 select-none"
   style="
-    width: {GRID_WIDTH * cellSize + 16}px;
-    height: {GRID_HEIGHT * cellSize + 16}px;
+    width: {gameStore.gridWidth * cellSize + 16}px;
+    height: {gameStore.gridHeight * cellSize + 16}px;
   "
 >
   <!-- Board grid background cells -->
@@ -37,12 +37,12 @@ const previewCells = $derived.by(() => {
     id="puzzle-grid"
     class="grid gap-1 w-full h-full"
     style="
-      grid-template-rows: repeat({GRID_HEIGHT}, 1fr);
-      grid-template-columns: repeat({GRID_WIDTH}, 1fr);
+      grid-template-rows: repeat({gameStore.gridHeight}, 1fr);
+      grid-template-columns: repeat({gameStore.gridWidth}, 1fr);
     "
   >
-    {#each Array(GRID_HEIGHT) as _, r}
-      {#each Array(GRID_WIDTH) as _, c}
+    {#each Array(gameStore.gridHeight) as _, r}
+      {#each Array(gameStore.gridWidth) as _, c}
         {@const blocked = isBlockade(r, c, gameStore.blockades)}
         {@const isPreview = previewCells.some(([pr, pc]) => pr === r && pc === c)}
         <div

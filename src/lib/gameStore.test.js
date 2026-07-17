@@ -64,6 +64,31 @@ describe("GameStore drag transitions", () => {
     expect(store.puzzleNumber).toBe(1);
   });
 
+  it("toggles into a clean 5x5 no-I game with one blockade and six pieces", () => {
+    store.placedPieces = [findSolution(store.blockades)[0]];
+    store.draggedPiece = { id: "I", rotationIndex: 0, origin: "inventory" };
+    store.hoveredCell = { r: 1, c: 1 };
+    store.shakingPieces = ["I"];
+
+    store.toggleGameMode();
+
+    expect(store.isNoIMode).toBe(true);
+    expect(store.gridWidth).toBe(5);
+    expect(store.gridHeight).toBe(5);
+    expect(store.blockades).toHaveLength(1);
+    expect(store.inventoryPieces.map((piece) => piece.id)).toEqual(["O", "T", "L", "J", "S", "Z"]);
+    expect(store.placedPieces).toEqual([]);
+    expect(store.draggedPiece).toBeNull();
+    expect(store.hoveredCell).toBeNull();
+    expect(store.shakingPieces).toEqual([]);
+    expect(findSolution(store.blockades, "no-i")).not.toBeNull();
+
+    store.toggleGameMode();
+    expect(store.isNoIMode).toBe(false);
+    expect(store.gridHeight).toBe(6);
+    expect(store.inventoryPieces.map((piece) => piece.id)).toContain("I");
+  });
+
   it("places an inventory piece using the grabbed block as its anchor", () => {
     const placement = findSolution(store.blockades)[0];
     const grabbedCell = PIECE_ORIENTATIONS[placement.id][placement.rotationIndex][0];

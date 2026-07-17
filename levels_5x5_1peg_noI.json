@@ -1,0 +1,14 @@
+[
+  { "id": 1, "blockade": [1, 2], "solutionCount": 4 },
+  { "id": 2, "blockade": [2, 1], "solutionCount": 4 },
+  { "id": 3, "blockade": [2, 3], "solutionCount": 4 },
+  { "id": 4, "blockade": [3, 2], "solutionCount": 4 },
+  { "id": 5, "blockade": [0, 1], "solutionCount": 7 },
+  { "id": 6, "blockade": [0, 3], "solutionCount": 7 },
+  { "id": 7, "blockade": [1, 0], "solutionCount": 7 },
+  { "id": 8, "blockade": [1, 4], "solutionCount": 7 },
+  { "id": 9, "blockade": [3, 0], "solutionCount": 7 },
+  { "id": 10, "blockade": [3, 4], "solutionCount": 7 },
+  { "id": 11, "blockade": [4, 1], "solutionCount": 7 },
+  { "id": 12, "blockade": [4, 3], "solutionCount": 7 }
+]

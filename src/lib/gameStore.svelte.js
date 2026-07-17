@@ -6,7 +6,10 @@ import {
   GRID_HEIGHT,
   GRID_WIDTH,
   getLevelsByDifficulty,
+  NO_I_GRID_HEIGHT,
+  NO_I_PIECE_IDS,
   PIECE_ORIENTATIONS,
+  STANDARD_PIECE_IDS,
   validatePlacement,
 } from "./game.js";
 
@@ -20,6 +23,7 @@ function placementsMatch(a, b) {
 export class GameStore {
   // Current active selections
   difficulty = $state("easy");
+  gameMode = $state("standard");
   currentLevelIndex = $state(0);
 
   // Placed and inventory pieces
@@ -52,6 +56,7 @@ export class GameStore {
 
   // Shake effect triggers
   shakingPieces = $state([]);
+  shakeTimeouts = new Set();
 
   // Cached solve results for the active puzzle.
   solutions = [];
@@ -62,7 +67,7 @@ export class GameStore {
 
   // List of levels for current difficulty
   get levelsList() {
-    return getLevelsByDifficulty(this.difficulty);
+    return getLevelsByDifficulty(this.difficulty, this.gameMode);
   }
 
   // Active level object
@@ -73,12 +78,29 @@ export class GameStore {
 
   // Blockades for active level
   get blockades() {
-    return this.activeLevel ? this.activeLevel.blockades : [];
+    if (!this.activeLevel) return [];
+    return this.activeLevel.blockades || [this.activeLevel.blockade];
+  }
+
+  get gridWidth() {
+    return GRID_WIDTH;
+  }
+
+  get gridHeight() {
+    return this.gameMode === "no-i" ? NO_I_GRID_HEIGHT : GRID_HEIGHT;
+  }
+
+  get pieceIds() {
+    return this.gameMode === "no-i" ? NO_I_PIECE_IDS : STANDARD_PIECE_IDS;
+  }
+
+  get isNoIMode() {
+    return this.gameMode === "no-i";
   }
 
   // Solved state
   get isWon() {
-    return checkWinCondition(this.placedPieces, this.blockades);
+    return checkWinCondition(this.placedPieces, this.blockades, this.gameMode);
   }
 
   // Stable level ID for persistence. It intentionally stays tied to the source
@@ -90,18 +112,24 @@ export class GameStore {
   // The catalogue is stored hardest-to-easiest, so present its reverse order:
   // puzzle 1 is the easiest and the final number is the hardest.
   get puzzleNumber() {
+    if (this.gameMode === "no-i") return this.levelId;
     return this.levelId ? this.totalPuzzleCount - this.levelId + 1 : 0;
   }
 
   get totalPuzzleCount() {
+    if (this.gameMode === "no-i") return this.levelsList.length;
     return DIFFICULTIES.reduce((total, diff) => total + getLevelsByDifficulty(diff).length, 0);
   }
 
   get completionStatus() {
     if (this.completionKind === "completed") return "Completed";
-    if (this.progress.completed[this.levelId]) return "Completed before";
+    if (this.progress.completed[this.progressKey]) return "Completed before";
     if (this.placedPieces.length > 0 || this.hintsUsed > 0) return "In progress";
     return "Not completed";
+  }
+
+  get progressKey() {
+    return this.gameMode === "no-i" ? `no-i:${this.levelId}` : this.levelId;
   }
 
   connectStorage(storage) {
@@ -145,7 +173,11 @@ export class GameStore {
     if (len === 1) return 0;
 
     const unsolvedIndexes = levelsForDiff
-      .map((level, index) => (this.progress.completed[level.id] ? -1 : index))
+      .map((level, index) =>
+        this.progress.completed[this.gameMode === "no-i" ? `no-i:${level.id}` : level.id]
+          ? -1
+          : index,
+      )
       .filter((index) => index >= 0 && index !== this.currentLevelIndex);
     if (unsolvedIndexes.length > 0) {
       return unsolvedIndexes[Math.floor(Math.random() * unsolvedIndexes.length)];
@@ -173,8 +205,8 @@ export class GameStore {
     this.conflictingPieceId = null;
     this.completionKind = null;
 
-    // Reset inventory to contain all 7 pieces, each at rotation index 0
-    this.inventoryPieces = ["I", "O", "T", "L", "J", "S", "Z"].map((id) => ({
+    // Reset inventory to contain this mode's pieces, each at rotation index 0.
+    this.inventoryPieces = this.pieceIds.map((id) => ({
       id,
       rotationIndex: 0,
     }));
@@ -182,6 +214,7 @@ export class GameStore {
 
   // Change difficulty
   setDifficulty(diff) {
+    if (this.gameMode !== "standard") return;
     if (!DIFFICULTIES.includes(diff)) return;
     this.difficulty = diff;
 
@@ -189,13 +222,28 @@ export class GameStore {
     this.persistProgress();
   }
 
+  toggleGameMode() {
+    this.gameMode = this.gameMode === "standard" ? "no-i" : "standard";
+    this.currentLevelIndex = 0;
+    this.draggedPiece = null;
+    this.hoveredCell = null;
+    this.pointerPos = { x: 0, y: 0 };
+    this.dragStartPos = { x: 0, y: 0 };
+    this.draggedOffset = { x: 0, y: 0 };
+    this.grabbedCell = { r: 0, c: 0 };
+    for (const timeoutId of this.shakeTimeouts) clearTimeout(timeoutId);
+    this.shakeTimeouts.clear();
+    this.shakingPieces = [];
+    this.initLevel();
+  }
+
   // Trigger the win celebration for the current puzzle.
   handleWin() {
     if (this.showWinCelebration) return;
     this.completionKind = "completed";
-    const previous = this.progress.completed[this.levelId];
+    const previous = this.progress.completed[this.progressKey];
     const bestHints = previous ? Math.min(previous.bestHints, this.hintsUsed) : this.hintsUsed;
-    this.progress.completed[this.levelId] = {
+    this.progress.completed[this.progressKey] = {
       bestHints,
       completedAt: new Date().toISOString(),
     };
@@ -205,7 +253,7 @@ export class GameStore {
 
   getSolutions() {
     if (this.solutions.length === 0) {
-      this.solutions = findSolutions(this.blockades);
+      this.solutions = findSolutions(this.blockades, this.gameMode);
     }
     return this.solutions;
   }
@@ -302,6 +350,7 @@ export class GameStore {
           nextRotation,
           this.blockades,
           otherPieces,
+          this.gameMode,
         );
 
         if (validation.valid) {
@@ -326,9 +375,11 @@ export class GameStore {
   triggerPieceShake(pieceId) {
     if (!this.shakingPieces.includes(pieceId)) {
       this.shakingPieces.push(pieceId);
-      setTimeout(() => {
+      const timeoutId = setTimeout(() => {
         this.shakingPieces = this.shakingPieces.filter((id) => id !== pieceId);
+        this.shakeTimeouts.delete(timeoutId);
       }, 500);
+      this.shakeTimeouts.add(timeoutId);
     }
   }
 
@@ -387,8 +438,8 @@ export class GameStore {
       gridRect,
       clientX,
       clientY,
-      GRID_HEIGHT,
-      GRID_WIDTH,
+      this.gridHeight,
+      this.gridWidth,
     );
 
     if (hoveredGridCell) {
@@ -406,7 +457,15 @@ export class GameStore {
   // single placed piece under the target is swapped out; touching two or more
   // pieces is ambiguous and leaves the board unchanged.
   getDropResolution(pieceId, row, col, rotationIndex) {
-    const baseValidation = validatePlacement(pieceId, row, col, rotationIndex, this.blockades, []);
+    const baseValidation = validatePlacement(
+      pieceId,
+      row,
+      col,
+      rotationIndex,
+      this.blockades,
+      [],
+      this.gameMode,
+    );
     if (!baseValidation.valid) return { ...baseValidation, displacedPieces: [] };
 
     const targetCells = new Set(baseValidation.cells.map(([r, c]) => `${r},${c}`));
@@ -429,6 +488,7 @@ export class GameStore {
       rotationIndex,
       this.blockades,
       this.placedPieces.filter((piece) => !displacedIds.has(piece.id)),
+      this.gameMode,
     );
 
     return { ...validation, displacedPieces: validation.valid ? displacedPieces : [] };
