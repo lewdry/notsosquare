@@ -38,8 +38,8 @@ body {
   height: 100%;
   overflow: hidden;
   overscroll-behavior: none;
-  /* Prevent scrolling on mobile while dragging */
-  touch-action: none;
+  /* Let the app shell receive normal vertical swipe gestures. */
+  touch-action: pan-y;
 }
 
 /* Custom premium styles */

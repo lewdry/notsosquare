@@ -56,17 +56,10 @@ onMount(() => {
     gameStore.endDrag();
   };
 
-  // iOS Safari can still treat a downward drag at the page edge as
-  // pull-to-refresh, even when the root is not scrollable. This app has no
-  // document scrolling, so cancelling touch movement is safe and keeps the
-  // active puzzle in place.
-  const preventPagePull = (e) => e.preventDefault();
-
   window.addEventListener("resize", handleResize);
   window.addEventListener("pointermove", handleGlobalPointerMove);
   window.addEventListener("pointerup", handleGlobalPointerUp);
   window.addEventListener("pointercancel", handleGlobalPointerCancel);
-  document.addEventListener("touchmove", preventPagePull, { passive: false });
   window.visualViewport?.addEventListener("resize", handleResize);
 
   return () => {
@@ -74,7 +67,6 @@ onMount(() => {
     window.removeEventListener("pointermove", handleGlobalPointerMove);
     window.removeEventListener("pointerup", handleGlobalPointerUp);
     window.removeEventListener("pointercancel", handleGlobalPointerCancel);
-    document.removeEventListener("touchmove", preventPagePull);
     window.visualViewport?.removeEventListener("resize", handleResize);
   };
 });
@@ -285,7 +277,8 @@ function handleCloseCelebration() {
     height: 100dvh;
     padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
     overscroll-behavior: none;
-    touch-action: none;
+    /* Preserve vertical scrolling while containing overscroll at the app edge. */
+    touch-action: pan-y;
   }
 
   /* A stable visible height prevents the game from extending below iOS Safari's
