@@ -129,7 +129,7 @@ function handleCloseCelebration() {
         Π
       </button>
       <h1 class="text-2xl leading-none font-black tracking-tight text-neutral uppercase">
-        {gameStore.isNoIMode ? "Sosquare" : "Notsosquare"}
+        {gameStore.isNoIMode ? "Nowsosquare" : "Notsosquare"}
       </h1>
     </div>
   </header>
