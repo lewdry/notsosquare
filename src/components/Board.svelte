@@ -26,7 +26,8 @@ const previewCells = $derived.by(() => {
 
 <div
   id="puzzle-board"
-  class="relative select-none border-4 border-stone-300 bg-stone-200/50 shadow-inner p-2 select-none"
+  class="relative select-none border-4 border-stone-300 bg-stone-200/50 shadow-inner p-2 select-none
+         {gameStore.isWinning ? 'board-victory' : ''}"
   style="
     width: {gameStore.gridWidth * cellSize + 16}px;
     height: {gameStore.gridHeight * cellSize + 16}px;
@@ -67,6 +68,7 @@ const previewCells = $derived.by(() => {
   {#each gameStore.placedPieces as piece (piece.id)}
     <div
       class="absolute transition-transform duration-100 ease-out z-10
+             {gameStore.isWinning ? 'piece-victory' : ''}
              {gameStore.hintedPieceId === piece.id ? 'ring-4 ring-success/60 animate-pulse' : ''}
              {gameStore.conflictingPieceId === piece.id ? 'ring-4 ring-error/70 animate-shake' : ''}"
       style="
@@ -115,6 +117,24 @@ const previewCells = $derived.by(() => {
 </div>
 
 <style>
+  .board-victory {
+    animation: board-victory 1.1s ease-out both;
+  }
+
+  .piece-victory {
+    animation: piece-victory 0.72s ease-in-out infinite alternate;
+  }
+
+  @keyframes board-victory {
+    0% { box-shadow: inset 0 2px 8px rgb(28 25 23 / 0.12); }
+    45%, 100% { box-shadow: inset 0 2px 8px rgb(28 25 23 / 0.1), 0 0 28px rgb(250 204 21 / 0.55); }
+  }
+
+  @keyframes piece-victory {
+    from { filter: brightness(1) drop-shadow(0 0 0 rgb(250 204 21 / 0)); transform: scale(1); }
+    to { filter: brightness(1.16) drop-shadow(0 0 10px rgb(250 204 21 / 0.88)); transform: scale(1.035); }
+  }
+
   .blockade-peg {
     position: relative;
     width: 68%;

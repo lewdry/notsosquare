@@ -125,7 +125,6 @@ function handleCloseCelebration() {
         class="w-6 h-6 bg-neutral flex items-center justify-center text-white font-black text-base shadow-md cursor-pointer"
         onclick={() => gameStore.toggleGameMode()}
         aria-label="Toggle No I Squared mode"
-        title="Toggle No I Squared mode"
       >
         Π
       </button>

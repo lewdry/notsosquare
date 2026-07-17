@@ -291,10 +291,25 @@ describe("GameStore drag transitions", () => {
     expect(store.completionStatus).toBe("Completed");
     expect(store.progress.completed[store.levelId].bestHints).toBe(2);
     expect(storage.setItem).toHaveBeenCalled();
+    store.initLevel({ randomizeLevel: false });
 
     const restoredStore = new GameStore();
     restoredStore.connectStorage(storage);
     expect(restoredStore.progress.completed[store.levelId].bestHints).toBe(2);
+  });
+
+  it("shows the completed board briefly before opening the win celebration", () => {
+    vi.useFakeTimers();
+
+    store.handleWin();
+    expect(store.isWinning).toBe(true);
+    expect(store.showWinCelebration).toBe(false);
+
+    vi.advanceTimersByTime(1100);
+    expect(store.isWinning).toBe(false);
+    expect(store.showWinCelebration).toBe(true);
+
+    vi.useRealTimers();
   });
 
   it("clears hint feedback but retains the usage count after a move", () => {

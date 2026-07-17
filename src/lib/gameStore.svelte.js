@@ -42,6 +42,8 @@ export class GameStore {
 
   // Show win celebration overlay
   showWinCelebration = $state(false);
+  isWinning = $state(false);
+  winTimeout = null;
 
   // Progressive hint and completion states
   hintsUsed = $state(0);
@@ -197,6 +199,9 @@ export class GameStore {
     }
 
     this.placedPieces = [];
+    if (this.winTimeout) clearTimeout(this.winTimeout);
+    this.winTimeout = null;
+    this.isWinning = false;
     this.showWinCelebration = false;
     this.solutions = [];
     this.hintsUsed = 0;
@@ -239,7 +244,7 @@ export class GameStore {
 
   // Trigger the win celebration for the current puzzle.
   handleWin() {
-    if (this.showWinCelebration) return;
+    if (this.showWinCelebration || this.isWinning) return;
     this.completionKind = "completed";
     const previous = this.progress.completed[this.progressKey];
     const bestHints = previous ? Math.min(previous.bestHints, this.hintsUsed) : this.hintsUsed;
@@ -248,7 +253,12 @@ export class GameStore {
       completedAt: new Date().toISOString(),
     };
     this.persistProgress();
-    this.showWinCelebration = true;
+    this.isWinning = true;
+    this.winTimeout = setTimeout(() => {
+      this.isWinning = false;
+      this.showWinCelebration = true;
+      this.winTimeout = null;
+    }, 1100);
   }
 
   getSolutions() {
@@ -334,6 +344,7 @@ export class GameStore {
 
   // ROTATION ACTIONS
   rotatePieceClockwise(pieceId, onBoard = false) {
+    if (this.isWinning) return;
     if (onBoard) {
       // Find placed piece
       const pieceIdx = this.placedPieces.findIndex((p) => p.id === pieceId);
@@ -385,6 +396,7 @@ export class GameStore {
 
   // DRAG AND DROP ACTIONS
   startDragFromInventory(pieceId, grabbedCell, clientX, clientY) {
+    if (this.isWinning) return;
     const piece = this.inventoryPieces.find((p) => p.id === pieceId);
     if (!piece) return;
 
@@ -401,6 +413,7 @@ export class GameStore {
   }
 
   startDragFromBoard(pieceId, grabbedCell, clientX, clientY) {
+    if (this.isWinning) return;
     const pieceIdx = this.placedPieces.findIndex((p) => p.id === pieceId);
     if (pieceIdx === -1) return;
 
