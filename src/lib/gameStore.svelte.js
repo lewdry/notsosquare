@@ -1,11 +1,10 @@
 import { clientPointToGridCell } from "./dragGeometry.js";
 import {
   checkWinCondition,
-  DIFFICULTIES,
   findSolutions,
   GRID_HEIGHT,
   GRID_WIDTH,
-  getLevelsByDifficulty,
+  getLevels,
   NO_I_GRID_HEIGHT,
   NO_I_PIECE_IDS,
   PIECE_ORIENTATIONS,
@@ -22,7 +21,6 @@ function placementsMatch(a, b) {
 
 export class GameStore {
   // Current active selections
-  difficulty = $state("easy");
   gameMode = $state("standard");
   currentLevelIndex = $state(0);
 
@@ -67,9 +65,9 @@ export class GameStore {
     this.initLevel();
   }
 
-  // List of levels for current difficulty
+  // List of puzzles for the current game mode.
   get levelsList() {
-    return getLevelsByDifficulty(this.difficulty, this.gameMode);
+    return getLevels(this.gameMode);
   }
 
   // Active level object
@@ -119,8 +117,7 @@ export class GameStore {
   }
 
   get totalPuzzleCount() {
-    if (this.gameMode === "no-i") return this.levelsList.length;
-    return DIFFICULTIES.reduce((total, diff) => total + getLevelsByDifficulty(diff).length, 0);
+    return this.levelsList.length;
   }
 
   get completionStatus() {
@@ -142,11 +139,8 @@ export class GameStore {
       if (saved?.completed && typeof saved.completed === "object") {
         this.progress = { completed: saved.completed };
       }
-      if (DIFFICULTIES.includes(saved?.difficulty)) {
-        this.difficulty = saved.difficulty;
-        this.currentLevelIndex = this.pickRandomLevelIndex();
-        this.initLevel({ randomizeLevel: false });
-      }
+      this.currentLevelIndex = this.pickRandomLevelIndex();
+      this.initLevel({ randomizeLevel: false });
     } catch (_error) {
       this.progress = { completed: {} };
     }
@@ -158,23 +152,23 @@ export class GameStore {
     try {
       this.storage.setItem(
         PROGRESS_STORAGE_KEY,
-        JSON.stringify({ difficulty: this.difficulty, completed: this.progress.completed }),
+        JSON.stringify({ completed: this.progress.completed }),
       );
     } catch (_error) {
       // Storage may be unavailable or full; gameplay should continue normally.
     }
   }
 
-  // Pick a random level index for the current difficulty.
+  // Pick a random puzzle for the current game mode.
   // When possible, avoid repeating the current index.
   pickRandomLevelIndex() {
-    const levelsForDiff = this.levelsList;
-    const len = levelsForDiff.length;
+    const levelsForMode = this.levelsList;
+    const len = levelsForMode.length;
 
     if (len <= 0) return 0;
     if (len === 1) return 0;
 
-    const unsolvedIndexes = levelsForDiff
+    const unsolvedIndexes = levelsForMode
       .map((level, index) =>
         this.progress.completed[this.gameMode === "no-i" ? `no-i:${level.id}` : level.id]
           ? -1
@@ -215,16 +209,6 @@ export class GameStore {
       id,
       rotationIndex: 0,
     }));
-  }
-
-  // Change difficulty
-  setDifficulty(diff) {
-    if (this.gameMode !== "standard") return;
-    if (!DIFFICULTIES.includes(diff)) return;
-    this.difficulty = diff;
-
-    this.initLevel();
-    this.persistProgress();
   }
 
   toggleGameMode() {

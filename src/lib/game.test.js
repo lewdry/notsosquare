@@ -1,10 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
   checkWinCondition,
-  DIFFICULTIES,
   findSolution,
   findSolutions,
-  getLevelsByDifficulty,
+  getLevels,
   isBlockade,
   PIECE_ORIENTATIONS,
   validatePlacement,
@@ -69,26 +68,11 @@ describe("Game Tiling Logic", () => {
     expect(checkWinCondition([], blockades)).toBe(false);
   });
 
-  it("groups puzzles into easy, normal, and hard difficulty tiers", () => {
-    expect(DIFFICULTIES).toEqual(["easy", "normal", "hard"]);
+  it("makes the complete 5x6 puzzle catalogue available", () => {
+    const levels = getLevels();
 
-    const easyLevels = getLevelsByDifficulty("easy");
-    expect(easyLevels).not.toHaveLength(0);
-    expect(easyLevels.every((level) => level.solutionCount > 13)).toBe(true);
-
-    const normalLevels = getLevelsByDifficulty("normal");
-    expect(normalLevels).not.toHaveLength(0);
-    expect(
-      normalLevels.every((level) => level.solutionCount >= 4 && level.solutionCount <= 12),
-    ).toBe(true);
-
-    const hardLevels = getLevelsByDifficulty("hard");
-    expect(hardLevels).not.toHaveLength(0);
-    expect(hardLevels.every((level) => level.solutionCount >= 1 && level.solutionCount <= 3)).toBe(
-      true,
-    );
-
-    expect(getLevelsByDifficulty("unknown")).toEqual([]);
+    expect(levels).not.toHaveLength(0);
+    expect(levels.every((level) => level.solutionCount >= 1)).toBe(true);
   });
 
   it("finds a complete valid tiling for a puzzle", () => {

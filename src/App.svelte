@@ -2,7 +2,7 @@
 import { onMount } from "svelte";
 import { gameStore } from "./lib/gameStore.svelte.js";
 import Board from "./components/Board.svelte";
-import DifficultySelector from "./components/DifficultySelector.svelte";
+import GameControls from "./components/GameControls.svelte";
 import Inventory from "./components/Inventory.svelte";
 import Piece from "./components/Piece.svelte";
 import { isClientPointInsideRect } from "./lib/dragGeometry.js";
@@ -134,7 +134,7 @@ function handleCloseCelebration() {
     </div>
   </header>
 
-  <div class="w-full max-w-2xl mx-auto flex-none flex flex-col items-center gap-2">
+  <div class="w-full max-w-2xl mx-auto flex-none flex flex-col items-center gap-1">
     <div
       id="piece-inventory"
       class="order-1 sm:order-2 grid grid-cols-2 items-center justify-items-center gap-1 my-1 sm:flex-1 sm:content-center sm:gap-2"
@@ -182,7 +182,7 @@ function handleCloseCelebration() {
     </div>
 
     <div class="order-2 w-full sm:order-3">
-      <DifficultySelector boardWidth={gameStore.gridWidth * cellSize + 16} />
+      <GameControls boardWidth={gameStore.gridWidth * cellSize + 16} />
     </div>
   </div>
 

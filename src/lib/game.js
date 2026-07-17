@@ -122,25 +122,10 @@ export const PIECE_ORIENTATIONS = Object.entries(TETROMINOES).reduce((acc, [name
   return acc;
 }, {});
 
-export const DIFFICULTIES = ["easy", "normal", "hard"];
-
-/**
- * Get all levels in a named difficulty tier.
- * Easy puzzles have more than 13 solutions, normal puzzles have 4–12,
- * and hard puzzles have 1–3.
- */
-export function getLevelsByDifficulty(difficulty, mode = "standard") {
+/** Get every puzzle available for a game mode. */
+export function getLevels(mode = "standard") {
   if (mode === "no-i") return noILevels;
-  switch (difficulty) {
-    case "easy":
-      return levels.filter((lvl) => lvl.solutionCount > 13);
-    case "normal":
-      return levels.filter((lvl) => lvl.solutionCount >= 4 && lvl.solutionCount <= 12);
-    case "hard":
-      return levels.filter((lvl) => lvl.solutionCount >= 1 && lvl.solutionCount <= 3);
-    default:
-      return [];
-  }
+  return levels;
 }
 
 /**

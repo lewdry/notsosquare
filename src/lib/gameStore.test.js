@@ -55,7 +55,7 @@ describe("GameStore drag transitions", () => {
     store.initLevel({ randomizeLevel: false });
   });
 
-  it("numbers the easiest catalogue level first while retaining stable level IDs", () => {
+  it("numbers the standard catalogue in reverse source order while retaining stable level IDs", () => {
     expect(store.levelId).toBe(169);
     expect(store.puzzleNumber).toBe(34);
 
