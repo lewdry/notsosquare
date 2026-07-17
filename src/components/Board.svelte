@@ -1,5 +1,5 @@
 <script>
-import { GRID_HEIGHT, GRID_WIDTH, isBlockade, validatePlacement } from "../lib/game.js";
+import { GRID_HEIGHT, GRID_WIDTH, isBlockade } from "../lib/game.js";
 import { gameStore } from "../lib/gameStore.svelte.js";
 import Piece from "./Piece.svelte";
 
@@ -10,8 +10,7 @@ const isHoverPlacementValid = $derived.by(() => {
   if (!gameStore.draggedPiece || !gameStore.hoveredCell) return false;
   const { id, rotationIndex } = gameStore.draggedPiece;
   const { r, c } = gameStore.hoveredCell;
-  return validatePlacement(id, r, c, rotationIndex, gameStore.blockades, gameStore.placedPieces)
-    .valid;
+  return gameStore.getDropResolution(id, r, c, rotationIndex).valid;
 });
 
 // Calculate coordinates of the ghost cells for valid/invalid hover previews
@@ -19,14 +18,7 @@ const previewCells = $derived.by(() => {
   if (!gameStore.draggedPiece || !gameStore.hoveredCell) return [];
   const { id, rotationIndex } = gameStore.draggedPiece;
   const { r, c } = gameStore.hoveredCell;
-  const res = validatePlacement(
-    id,
-    r,
-    c,
-    rotationIndex,
-    gameStore.blockades,
-    gameStore.placedPieces,
-  );
+  const res = gameStore.getDropResolution(id, r, c, rotationIndex);
   return res.valid ? res.cells || [] : [];
 });
 

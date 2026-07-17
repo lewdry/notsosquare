@@ -11,7 +11,6 @@ import {
 } from "./game.js";
 
 const PROGRESS_STORAGE_KEY = "notsosquare-progress-v1";
-
 function placementsMatch(a, b) {
   if (a.id !== b.id || a.row !== b.row || a.col !== b.col) return false;
   const rotations = PIECE_ORIENTATIONS[a.id];
@@ -403,6 +402,38 @@ export class GameStore {
     }
   }
 
+  // Drops are resolved from snapped grid cells, not visual pixel edges. A
+  // single placed piece under the target is swapped out; touching two or more
+  // pieces is ambiguous and leaves the board unchanged.
+  getDropResolution(pieceId, row, col, rotationIndex) {
+    const baseValidation = validatePlacement(pieceId, row, col, rotationIndex, this.blockades, []);
+    if (!baseValidation.valid) return { ...baseValidation, displacedPieces: [] };
+
+    const targetCells = new Set(baseValidation.cells.map(([r, c]) => `${r},${c}`));
+    const displacedPieces = this.placedPieces.filter((piece) => {
+      const shape =
+        PIECE_ORIENTATIONS[piece.id][piece.rotationIndex % PIECE_ORIENTATIONS[piece.id].length];
+      return shape.some(([dr, dc]) => targetCells.has(`${piece.row + dr},${piece.col + dc}`));
+    });
+
+    if (displacedPieces.length > 1) {
+      return { valid: false, reason: "Overlaps with multiple pieces", displacedPieces: [] };
+    }
+
+    const displacedIds = new Set(displacedPieces.map((piece) => piece.id));
+
+    const validation = validatePlacement(
+      pieceId,
+      row,
+      col,
+      rotationIndex,
+      this.blockades,
+      this.placedPieces.filter((piece) => !displacedIds.has(piece.id)),
+    );
+
+    return { ...validation, displacedPieces: validation.valid ? displacedPieces : [] };
+  }
+
   endDrag({ droppedOnBoard = false } = {}) {
     if (!this.draggedPiece) return;
 
@@ -413,16 +444,15 @@ export class GameStore {
       const targetRow = this.hoveredCell.r;
       const targetCol = this.hoveredCell.c;
 
-      const validation = validatePlacement(
-        id,
-        targetRow,
-        targetCol,
-        rotationIndex,
-        this.blockades,
-        this.placedPieces,
-      );
+      const resolution = this.getDropResolution(id, targetRow, targetCol, rotationIndex);
 
-      if (validation.valid) {
+      if (resolution.valid) {
+        const displacedIds = new Set(resolution.displacedPieces.map((piece) => piece.id));
+        this.placedPieces = this.placedPieces.filter((piece) => !displacedIds.has(piece.id));
+        for (const piece of resolution.displacedPieces) {
+          this.inventoryPieces.push({ id: piece.id, rotationIndex: piece.rotationIndex });
+        }
+
         // Place piece
         this.placedPieces.push({
           id,
