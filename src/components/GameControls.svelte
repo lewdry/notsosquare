@@ -26,14 +26,14 @@ function skipPuzzle() {
       onclick={resetBoard}
       class="btn btn-ghost btn-sm h-8 min-h-8 font-bold text-stone-600 border border-stone-200/50 hover:bg-stone-100"
     >
-      Reset Board
+      Reset
     </button>
     <button
       type="button"
       onclick={skipPuzzle}
       class="btn btn-ghost btn-sm h-8 min-h-8 font-bold text-stone-600 border border-stone-200/50 hover:bg-stone-100"
     >
-      Skip Puzzle
+      Skip
     </button>
     <button
       type="button"

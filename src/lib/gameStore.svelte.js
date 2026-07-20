@@ -21,7 +21,7 @@ function placementsMatch(a, b) {
 
 export class GameStore {
   // Current active selections
-  gameMode = $state("standard");
+  gameMode = $state("no-i");
   currentLevelIndex = $state(0);
 
   // Placed and inventory pieces
@@ -242,7 +242,7 @@ export class GameStore {
       this.isWinning = false;
       this.showWinCelebration = true;
       this.winTimeout = null;
-    }, 1100);
+    }, 1400);
   }
 
   getSolutions() {

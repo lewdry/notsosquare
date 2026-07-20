@@ -3,253 +3,289 @@
     "id": 1,
     "blockades": [
       [
-        0,
-        1
+        2,
+        0
       ],
       [
-        1,
+        2,
         2
       ]
     ],
-    "solutionCount": 1
+    "solutionCount": 12,
+    "nodesExplored": 494,
+    "nodesPerSolution": 41.2
   },
   {
     "id": 2,
     "blockades": [
       [
-        0,
+        1,
         1
       ],
       [
         2,
-        3
+        0
       ]
     ],
-    "solutionCount": 1
+    "solutionCount": 8,
+    "nodesExplored": 330,
+    "nodesPerSolution": 41.3
   },
   {
     "id": 3,
     "blockades": [
       [
         0,
-        3
+        2
       ],
       [
         1,
-        2
+        3
       ]
     ],
-    "solutionCount": 1
+    "solutionCount": 7,
+    "nodesExplored": 293,
+    "nodesPerSolution": 41.9
   },
   {
     "id": 4,
     "blockades": [
       [
-        0,
+        1,
         3
       ],
       [
         2,
-        1
+        4
       ]
     ],
-    "solutionCount": 1
+    "solutionCount": 8,
+    "nodesExplored": 344,
+    "nodesPerSolution": 43
   },
   {
     "id": 5,
     "blockades": [
       [
-        1,
-        0
+        2,
+        2
       ],
       [
-        1,
-        2
+        2,
+        4
       ]
     ],
-    "solutionCount": 1
+    "solutionCount": 12,
+    "nodesExplored": 531,
+    "nodesPerSolution": 44.3
   },
   {
     "id": 6,
     "blockades": [
       [
-        1,
-        0
+        2,
+        3
       ],
       [
-        3,
-        2
+        5,
+        0
       ]
     ],
-    "solutionCount": 1
+    "solutionCount": 23,
+    "nodesExplored": 1033,
+    "nodesPerSolution": 44.9
   },
   {
     "id": 7,
     "blockades": [
       [
-        1,
+        0,
         2
       ],
       [
-        1,
-        4
+        3,
+        3
       ]
     ],
-    "solutionCount": 1
+    "solutionCount": 12,
+    "nodesExplored": 540,
+    "nodesPerSolution": 45
   },
   {
     "id": 8,
     "blockades": [
       [
-        1,
-        4
+        0,
+        2
       ],
       [
         3,
-        2
+        1
       ]
     ],
-    "solutionCount": 1
+    "solutionCount": 12,
+    "nodesExplored": 544,
+    "nodesPerSolution": 45.3
   },
   {
     "id": 9,
     "blockades": [
       [
-        2,
+        0,
         2
       ],
       [
-        4,
-        0
+        1,
+        1
       ]
     ],
-    "solutionCount": 1
+    "solutionCount": 7,
+    "nodesExplored": 318,
+    "nodesPerSolution": 45.4
   },
   {
     "id": 10,
     "blockades": [
       [
         2,
-        2
+        0
       ],
       [
-        4,
-        4
+        3,
+        1
       ]
     ],
-    "solutionCount": 1
+    "solutionCount": 9,
+    "nodesExplored": 416,
+    "nodesPerSolution": 46.2
   },
   {
     "id": 11,
     "blockades": [
       [
-        3,
-        1
+        0,
+        3
       ],
       [
         5,
-        3
+        0
       ]
     ],
-    "solutionCount": 1
+    "solutionCount": 25,
+    "nodesExplored": 1163,
+    "nodesPerSolution": 46.5
   },
   {
     "id": 12,
     "blockades": [
       [
-        3,
-        3
+        2,
+        1
       ],
       [
         5,
-        1
+        4
       ]
     ],
-    "solutionCount": 1
+    "solutionCount": 23,
+    "nodesExplored": 1125,
+    "nodesPerSolution": 48.9
   },
   {
     "id": 13,
     "blockades": [
       [
-        4,
+        0,
         0
       ],
       [
-        4,
-        2
+        1,
+        1
       ]
     ],
-    "solutionCount": 1
+    "solutionCount": 11,
+    "nodesExplored": 561,
+    "nodesPerSolution": 51
   },
   {
     "id": 14,
     "blockades": [
       [
-        4,
-        2
+        0,
+        4
       ],
       [
-        4,
-        4
+        1,
+        3
       ]
     ],
-    "solutionCount": 1
+    "solutionCount": 11,
+    "nodesExplored": 564,
+    "nodesPerSolution": 51.3
   },
   {
     "id": 15,
     "blockades": [
       [
-        4,
-        2
+        2,
+        0
       ],
       [
-        5,
-        1
+        3,
+        3
       ]
     ],
-    "solutionCount": 1
+    "solutionCount": 10,
+    "nodesExplored": 523,
+    "nodesPerSolution": 52.3
   },
   {
     "id": 16,
     "blockades": [
       [
-        4,
-        2
+        0,
+        1
       ],
       [
         5,
-        3
+        0
       ]
     ],
-    "solutionCount": 1
+    "solutionCount": 24,
+    "nodesExplored": 1276,
+    "nodesPerSolution": 53.2
   },
   {
     "id": 17,
     "blockades": [
       [
         0,
-        1
+        3
       ],
       [
-        4,
-        1
+        5,
+        4
       ]
     ],
-    "solutionCount": 2
+    "solutionCount": 24,
+    "nodesExplored": 1277,
+    "nodesPerSolution": 53.2
   },
   {
     "id": 18,
     "blockades": [
       [
         0,
-        2
+        1
       ],
       [
-        2,
-        2
+        5,
+        4
       ]
     ],
-    "solutionCount": 2
+    "solutionCount": 25,
+    "nodesExplored": 1339,
+    "nodesPerSolution": 53.6
   },
   {
     "id": 19,
@@ -259,39 +295,45 @@
         3
       ],
       [
-        4,
-        3
+        3,
+        2
       ]
     ],
-    "solutionCount": 2
+    "solutionCount": 11,
+    "nodesExplored": 592,
+    "nodesPerSolution": 53.8
   },
   {
     "id": 20,
     "blockades": [
       [
-        1,
-        0
+        0,
+        4
       ],
       [
-        4,
+        3,
         1
       ]
     ],
-    "solutionCount": 2
+    "solutionCount": 23,
+    "nodesExplored": 1270,
+    "nodesPerSolution": 55.2
   },
   {
     "id": 21,
     "blockades": [
       [
-        1,
+        0,
         1
       ],
       [
         3,
-        3
+        2
       ]
     ],
-    "solutionCount": 2
+    "solutionCount": 11,
+    "nodesExplored": 616,
+    "nodesPerSolution": 56
   },
   {
     "id": 22,
@@ -301,11 +343,13 @@
         1
       ],
       [
-        4,
-        0
+        1,
+        3
       ]
     ],
-    "solutionCount": 2
+    "solutionCount": 4,
+    "nodesExplored": 227,
+    "nodesPerSolution": 56.8
   },
   {
     "id": 23,
@@ -315,25 +359,29 @@
         1
       ],
       [
-        5,
-        1
+        2,
+        4
       ]
     ],
-    "solutionCount": 2
+    "solutionCount": 9,
+    "nodesExplored": 512,
+    "nodesPerSolution": 56.9
   },
   {
     "id": 24,
     "blockades": [
       [
-        1,
-        2
+        0,
+        0
       ],
       [
         3,
-        2
+        3
       ]
     ],
-    "solutionCount": 2
+    "solutionCount": 23,
+    "nodesExplored": 1334,
+    "nodesPerSolution": 58
   },
   {
     "id": 25,
@@ -343,249 +391,285 @@
         3
       ],
       [
-        3,
-        1
+        2,
+        0
       ]
     ],
-    "solutionCount": 2
+    "solutionCount": 9,
+    "nodesExplored": 527,
+    "nodesPerSolution": 58.6
   },
   {
     "id": 26,
     "blockades": [
       [
-        1,
-        3
+        2,
+        1
       ],
       [
-        4,
-        4
+        3,
+        0
       ]
     ],
-    "solutionCount": 2
+    "solutionCount": 9,
+    "nodesExplored": 539,
+    "nodesPerSolution": 59.9
   },
   {
     "id": 27,
     "blockades": [
       [
-        1,
-        3
+        2,
+        2
       ],
       [
         5,
-        3
+        1
       ]
     ],
-    "solutionCount": 2
+    "solutionCount": 11,
+    "nodesExplored": 672,
+    "nodesPerSolution": 61.1
   },
   {
     "id": 28,
     "blockades": [
       [
-        1,
+        2,
         4
       ],
       [
-        4,
-        3
+        3,
+        1
       ]
     ],
-    "solutionCount": 2
+    "solutionCount": 10,
+    "nodesExplored": 611,
+    "nodesPerSolution": 61.1
   },
   {
     "id": 29,
     "blockades": [
       [
         2,
-        1
+        4
       ],
       [
-        4,
+        3,
         3
       ]
     ],
-    "solutionCount": 2
+    "solutionCount": 9,
+    "nodesExplored": 557,
+    "nodesPerSolution": 61.9
   },
   {
     "id": 30,
     "blockades": [
       [
-        2,
+        0,
         2
       ],
       [
-        4,
-        2
+        5,
+        1
       ]
     ],
-    "solutionCount": 2
+    "solutionCount": 14,
+    "nodesExplored": 873,
+    "nodesPerSolution": 62.4
   },
   {
     "id": 31,
     "blockades": [
       [
-        2,
-        3
+        1,
+        0
       ],
       [
-        4,
-        1
+        3,
+        0
       ]
     ],
-    "solutionCount": 2
+    "solutionCount": 8,
+    "nodesExplored": 505,
+    "nodesPerSolution": 63.1
   },
   {
     "id": 32,
     "blockades": [
       [
-        3,
+        2,
         2
       ],
       [
-        5,
-        2
+        3,
+        1
       ]
     ],
-    "solutionCount": 2
+    "solutionCount": 7,
+    "nodesExplored": 443,
+    "nodesPerSolution": 63.3
   },
   {
     "id": 33,
     "blockades": [
       [
-        0,
-        1
+        2,
+        2
       ],
       [
-        1,
-        4
+        3,
+        3
       ]
     ],
-    "solutionCount": 3
+    "solutionCount": 7,
+    "nodesExplored": 449,
+    "nodesPerSolution": 64.1
   },
   {
     "id": 34,
     "blockades": [
       [
         0,
-        1
+        0
       ],
       [
-        2,
-        1
+        1,
+        3
       ]
     ],
-    "solutionCount": 3
+    "solutionCount": 17,
+    "nodesExplored": 1092,
+    "nodesPerSolution": 64.2
   },
   {
     "id": 35,
     "blockades": [
       [
         0,
-        3
+        4
       ],
       [
         1,
-        0
+        1
       ]
     ],
-    "solutionCount": 3
+    "solutionCount": 17,
+    "nodesExplored": 1093,
+    "nodesPerSolution": 64.3
   },
   {
     "id": 36,
+    "blockades": [
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "solutionCount": 8,
+    "nodesExplored": 515,
+    "nodesPerSolution": 64.4
+  },
+  {
+    "id": 37,
+    "blockades": [
+      [
+        2,
+        2
+      ],
+      [
+        5,
+        3
+      ]
+    ],
+    "solutionCount": 11,
+    "nodesExplored": 709,
+    "nodesPerSolution": 64.5
+  },
+  {
+    "id": 38,
+    "blockades": [
+      [
+        1,
+        0
+      ],
+      [
+        5,
+        0
+      ]
+    ],
+    "solutionCount": 17,
+    "nodesExplored": 1102,
+    "nodesPerSolution": 64.8
+  },
+  {
+    "id": 39,
+    "blockades": [
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        2
+      ]
+    ],
+    "solutionCount": 12,
+    "nodesExplored": 794,
+    "nodesPerSolution": 66.2
+  },
+  {
+    "id": 40,
+    "blockades": [
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        2
+      ]
+    ],
+    "solutionCount": 6,
+    "nodesExplored": 401,
+    "nodesPerSolution": 66.8
+  },
+  {
+    "id": 41,
+    "blockades": [
+      [
+        0,
+        2
+      ],
+      [
+        5,
+        3
+      ]
+    ],
+    "solutionCount": 14,
+    "nodesExplored": 958,
+    "nodesPerSolution": 68.4
+  },
+  {
+    "id": 42,
     "blockades": [
       [
         0,
         3
       ],
       [
-        2,
-        3
-      ]
-    ],
-    "solutionCount": 3
-  },
-  {
-    "id": 37,
-    "blockades": [
-      [
         3,
-        1
-      ],
-      [
-        5,
-        1
-      ]
-    ],
-    "solutionCount": 3
-  },
-  {
-    "id": 38,
-    "blockades": [
-      [
-        3,
-        3
-      ],
-      [
-        5,
-        3
-      ]
-    ],
-    "solutionCount": 3
-  },
-  {
-    "id": 39,
-    "blockades": [
-      [
-        4,
         0
-      ],
-      [
-        5,
-        3
       ]
     ],
-    "solutionCount": 3
-  },
-  {
-    "id": 40,
-    "blockades": [
-      [
-        4,
-        4
-      ],
-      [
-        5,
-        1
-      ]
-    ],
-    "solutionCount": 3
-  },
-  {
-    "id": 41,
-    "blockades": [
-      [
-        1,
-        0
-      ],
-      [
-        2,
-        1
-      ]
-    ],
-    "solutionCount": 4
-  },
-  {
-    "id": 42,
-    "blockades": [
-      [
-        1,
-        1
-      ],
-      [
-        1,
-        3
-      ]
-    ],
-    "solutionCount": 4
+    "solutionCount": 11,
+    "nodesExplored": 760,
+    "nodesPerSolution": 69.1
   },
   {
     "id": 43,
@@ -595,193 +679,221 @@
         1
       ],
       [
-        3,
-        1
+        2,
+        2
       ]
     ],
-    "solutionCount": 4
+    "solutionCount": 6,
+    "nodesExplored": 417,
+    "nodesPerSolution": 69.5
   },
   {
     "id": 44,
     "blockades": [
       [
-        1,
-        2
+        2,
+        1
       ],
       [
-        3,
-        0
+        2,
+        3
       ]
     ],
-    "solutionCount": 4
+    "solutionCount": 6,
+    "nodesExplored": 419,
+    "nodesPerSolution": 69.8
   },
   {
     "id": 45,
     "blockades": [
       [
-        1,
-        2
+        2,
+        3
       ],
       [
         3,
         4
       ]
     ],
-    "solutionCount": 4
+    "solutionCount": 9,
+    "nodesExplored": 631,
+    "nodesPerSolution": 70.1
   },
   {
     "id": 46,
     "blockades": [
       [
         1,
-        3
+        4
       ],
       [
-        3,
-        3
+        5,
+        4
       ]
     ],
-    "solutionCount": 4
+    "solutionCount": 17,
+    "nodesExplored": 1199,
+    "nodesPerSolution": 70.5
   },
   {
     "id": 47,
+    "blockades": [
+      [
+        0,
+        2
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "solutionCount": 6,
+    "nodesExplored": 425,
+    "nodesPerSolution": 70.8
+  },
+  {
+    "id": 48,
+    "blockades": [
+      [
+        0,
+        2
+      ],
+      [
+        4,
+        0
+      ]
+    ],
+    "solutionCount": 9,
+    "nodesExplored": 640,
+    "nodesPerSolution": 71.1
+  },
+  {
+    "id": 49,
     "blockades": [
       [
         1,
         4
       ],
       [
-        2,
-        3
-      ]
-    ],
-    "solutionCount": 4
-  },
-  {
-    "id": 48,
-    "blockades": [
-      [
-        2,
+        5,
         0
-      ],
-      [
-        4,
-        2
       ]
     ],
-    "solutionCount": 4
-  },
-  {
-    "id": 49,
-    "blockades": [
-      [
-        2,
-        1
-      ],
-      [
-        4,
-        1
-      ]
-    ],
-    "solutionCount": 4
+    "solutionCount": 16,
+    "nodesExplored": 1145,
+    "nodesPerSolution": 71.6
   },
   {
     "id": 50,
     "blockades": [
       [
-        2,
-        3
+        1,
+        4
       ],
       [
-        4,
-        3
+        3,
+        0
       ]
     ],
-    "solutionCount": 4
+    "solutionCount": 10,
+    "nodesExplored": 721,
+    "nodesPerSolution": 72.1
   },
   {
     "id": 51,
     "blockades": [
       [
         2,
-        4
+        3
       ],
       [
-        4,
-        2
+        3,
+        0
       ]
     ],
-    "solutionCount": 4
+    "solutionCount": 10,
+    "nodesExplored": 721,
+    "nodesPerSolution": 72.1
   },
   {
     "id": 52,
     "blockades": [
       [
-        3,
-        1
+        2,
+        4
       ],
       [
         4,
         0
       ]
     ],
-    "solutionCount": 4
+    "solutionCount": 10,
+    "nodesExplored": 723,
+    "nodesPerSolution": 72.3
   },
   {
     "id": 53,
     "blockades": [
       [
-        3,
+        1,
         3
       ],
       [
         4,
-        4
+        2
       ]
     ],
-    "solutionCount": 4
+    "solutionCount": 8,
+    "nodesExplored": 592,
+    "nodesPerSolution": 74
   },
   {
     "id": 54,
     "blockades": [
       [
-        4,
+        2,
         1
       ],
       [
-        4,
-        3
+        3,
+        4
       ]
     ],
-    "solutionCount": 4
+    "solutionCount": 10,
+    "nodesExplored": 743,
+    "nodesPerSolution": 74.3
   },
   {
     "id": 55,
     "blockades": [
       [
         0,
-        1
+        0
       ],
       [
-        4,
-        3
+        2,
+        0
       ]
     ],
-    "solutionCount": 5
+    "solutionCount": 15,
+    "nodesExplored": 1129,
+    "nodesPerSolution": 75.3
   },
   {
     "id": 56,
     "blockades": [
       [
-        0,
-        3
+        1,
+        0
       ],
       [
-        4,
-        1
+        3,
+        4
       ]
     ],
-    "solutionCount": 5
+    "solutionCount": 10,
+    "nodesExplored": 754,
+    "nodesPerSolution": 75.4
   },
   {
     "id": 57,
@@ -791,11 +903,13 @@
         0
       ],
       [
-        4,
-        3
+        5,
+        4
       ]
     ],
-    "solutionCount": 5
+    "solutionCount": 16,
+    "nodesExplored": 1212,
+    "nodesPerSolution": 75.8
   },
   {
     "id": 58,
@@ -806,584 +920,668 @@
       ],
       [
         4,
-        4
+        2
       ]
     ],
-    "solutionCount": 5
+    "solutionCount": 8,
+    "nodesExplored": 606,
+    "nodesPerSolution": 75.8
   },
   {
     "id": 59,
     "blockades": [
       [
-        1,
-        1
+        2,
+        0
       ],
       [
-        5,
-        3
+        4,
+        4
       ]
     ],
-    "solutionCount": 5
+    "solutionCount": 10,
+    "nodesExplored": 762,
+    "nodesPerSolution": 76.2
   },
   {
     "id": 60,
     "blockades": [
       [
-        1,
-        3
+        0,
+        1
       ],
       [
-        4,
-        0
+        3,
+        4
       ]
     ],
-    "solutionCount": 5
+    "solutionCount": 11,
+    "nodesExplored": 864,
+    "nodesPerSolution": 78.5
   },
   {
     "id": 61,
     "blockades": [
       [
         1,
+        0
+      ],
+      [
+        2,
         3
+      ]
+    ],
+    "solutionCount": 7,
+    "nodesExplored": 551,
+    "nodesPerSolution": 78.7
+  },
+  {
+    "id": 62,
+    "blockades": [
+      [
+        0,
+        4
       ],
       [
         5,
         1
       ]
     ],
-    "solutionCount": 5
-  },
-  {
-    "id": 62,
-    "blockades": [
-      [
-        1,
-        4
-      ],
-      [
-        4,
-        1
-      ]
-    ],
-    "solutionCount": 5
+    "solutionCount": 25,
+    "nodesExplored": 1969,
+    "nodesPerSolution": 78.8
   },
   {
     "id": 63,
     "blockades": [
       [
         0,
-        1
+        2
       ],
       [
-        3,
-        0
+        2,
+        4
       ]
     ],
-    "solutionCount": 6
+    "solutionCount": 6,
+    "nodesExplored": 474,
+    "nodesPerSolution": 79
   },
   {
     "id": 64,
     "blockades": [
       [
-        0,
+        3,
         2
-      ],
-      [
-        2,
-        0
-      ]
-    ],
-    "solutionCount": 6
-  },
-  {
-    "id": 65,
-    "blockades": [
-      [
-        0,
-        2
-      ],
-      [
-        2,
-        4
-      ]
-    ],
-    "solutionCount": 6
-  },
-  {
-    "id": 66,
-    "blockades": [
-      [
-        0,
-        3
       ],
       [
         3,
         4
       ]
     ],
-    "solutionCount": 6
+    "solutionCount": 12,
+    "nodesExplored": 951,
+    "nodesPerSolution": 79.3
+  },
+  {
+    "id": 65,
+    "blockades": [
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        2
+      ]
+    ],
+    "solutionCount": 7,
+    "nodesExplored": 558,
+    "nodesPerSolution": 79.7
+  },
+  {
+    "id": 66,
+    "blockades": [
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        2
+      ]
+    ],
+    "solutionCount": 7,
+    "nodesExplored": 571,
+    "nodesPerSolution": 81.6
   },
   {
     "id": 67,
     "blockades": [
       [
-        1,
-        1
+        0,
+        4
       ],
       [
         2,
-        2
+        4
       ]
     ],
-    "solutionCount": 6
+    "solutionCount": 15,
+    "nodesExplored": 1230,
+    "nodesPerSolution": 82
   },
   {
     "id": 68,
     "blockades": [
       [
-        1,
+        0,
         2
       ],
       [
-        2,
-        1
+        4,
+        4
       ]
     ],
-    "solutionCount": 6
+    "solutionCount": 9,
+    "nodesExplored": 742,
+    "nodesPerSolution": 82.4
   },
   {
     "id": 69,
     "blockades": [
       [
-        1,
-        2
+        0,
+        0
       ],
       [
-        2,
-        3
+        5,
+        1
       ]
     ],
-    "solutionCount": 6
+    "solutionCount": 24,
+    "nodesExplored": 1995,
+    "nodesPerSolution": 83.1
   },
   {
     "id": 70,
     "blockades": [
       [
-        1,
-        3
+        2,
+        0
       ],
       [
         2,
-        2
+        4
       ]
     ],
-    "solutionCount": 6
+    "solutionCount": 8,
+    "nodesExplored": 685,
+    "nodesPerSolution": 85.6
   },
   {
     "id": 71,
     "blockades": [
       [
         2,
-        0
+        1
       ],
       [
         5,
-        1
+        0
       ]
     ],
-    "solutionCount": 6
+    "solutionCount": 12,
+    "nodesExplored": 1027,
+    "nodesPerSolution": 85.6
   },
   {
     "id": 72,
     "blockades": [
       [
-        2,
-        1
+        0,
+        3
       ],
       [
-        2,
-        3
+        5,
+        2
       ]
     ],
-    "solutionCount": 6
+    "solutionCount": 14,
+    "nodesExplored": 1205,
+    "nodesPerSolution": 86.1
   },
   {
     "id": 73,
     "blockades": [
       [
         2,
-        4
+        3
       ],
       [
         5,
-        3
+        2
       ]
     ],
-    "solutionCount": 6
+    "solutionCount": 12,
+    "nodesExplored": 1038,
+    "nodesPerSolution": 86.5
   },
   {
     "id": 74,
     "blockades": [
       [
-        3,
-        0
+        1,
+        4
       ],
       [
-        5,
-        2
+        2,
+        1
       ]
     ],
-    "solutionCount": 6
+    "solutionCount": 7,
+    "nodesExplored": 606,
+    "nodesPerSolution": 86.6
   },
   {
     "id": 75,
     "blockades": [
       [
-        3,
-        1
+        2,
+        4
       ],
       [
-        3,
-        3
+        5,
+        1
       ]
     ],
-    "solutionCount": 6
+    "solutionCount": 11,
+    "nodesExplored": 954,
+    "nodesPerSolution": 86.7
   },
   {
     "id": 76,
     "blockades": [
       [
-        3,
+        1,
         1
       ],
       [
-        4,
-        2
+        3,
+        1
       ]
     ],
-    "solutionCount": 6
+    "solutionCount": 4,
+    "nodesExplored": 347,
+    "nodesPerSolution": 86.8
   },
   {
     "id": 77,
     "blockades": [
       [
-        3,
-        2
-      ],
-      [
-        4,
+        2,
         1
-      ]
-    ],
-    "solutionCount": 6
-  },
-  {
-    "id": 78,
-    "blockades": [
-      [
-        3,
-        2
-      ],
-      [
-        4,
-        3
-      ]
-    ],
-    "solutionCount": 6
-  },
-  {
-    "id": 79,
-    "blockades": [
-      [
-        3,
-        3
-      ],
-      [
-        4,
-        2
-      ]
-    ],
-    "solutionCount": 6
-  },
-  {
-    "id": 80,
-    "blockades": [
-      [
-        3,
-        4
       ],
       [
         5,
         2
       ]
     ],
-    "solutionCount": 6
+    "solutionCount": 12,
+    "nodesExplored": 1041,
+    "nodesPerSolution": 86.8
+  },
+  {
+    "id": 78,
+    "blockades": [
+      [
+        0,
+        0
+      ],
+      [
+        5,
+        3
+      ]
+    ],
+    "solutionCount": 25,
+    "nodesExplored": 2173,
+    "nodesPerSolution": 86.9
+  },
+  {
+    "id": 79,
+    "blockades": [
+      [
+        1,
+        2
+      ],
+      [
+        4,
+        1
+      ]
+    ],
+    "solutionCount": 8,
+    "nodesExplored": 695,
+    "nodesPerSolution": 86.9
+  },
+  {
+    "id": 80,
+    "blockades": [
+      [
+        0,
+        4
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "solutionCount": 12,
+    "nodesExplored": 1048,
+    "nodesPerSolution": 87.3
   },
   {
     "id": 81,
     "blockades": [
       [
-        0,
+        1,
         2
       ],
       [
-        1,
-        1
+        2,
+        3
       ]
     ],
-    "solutionCount": 7
+    "solutionCount": 6,
+    "nodesExplored": 525,
+    "nodesPerSolution": 87.5
   },
   {
     "id": 82,
     "blockades": [
       [
-        0,
-        2
+        2,
+        0
       ],
       [
-        1,
+        5,
         3
       ]
     ],
-    "solutionCount": 7
+    "solutionCount": 11,
+    "nodesExplored": 975,
+    "nodesPerSolution": 88.6
   },
   {
     "id": 83,
     "blockades": [
       [
-        1,
-        0
+        4,
+        1
       ],
       [
-        2,
-        3
+        5,
+        4
       ]
     ],
-    "solutionCount": 7
+    "solutionCount": 17,
+    "nodesExplored": 1512,
+    "nodesPerSolution": 88.9
   },
   {
     "id": 84,
     "blockades": [
       [
-        1,
+        0,
         4
       ],
       [
-        2,
-        1
+        5,
+        3
       ]
     ],
-    "solutionCount": 7
+    "solutionCount": 24,
+    "nodesExplored": 2136,
+    "nodesPerSolution": 89
   },
   {
     "id": 85,
     "blockades": [
       [
         2,
-        1
+        3
       ],
       [
-        3,
-        2
+        5,
+        4
       ]
     ],
-    "solutionCount": 7
+    "solutionCount": 12,
+    "nodesExplored": 1071,
+    "nodesPerSolution": 89.3
   },
   {
     "id": 86,
     "blockades": [
       [
-        2,
-        2
+        0,
+        1
       ],
       [
-        3,
-        1
+        5,
+        2
       ]
     ],
-    "solutionCount": 7
+    "solutionCount": 14,
+    "nodesExplored": 1266,
+    "nodesPerSolution": 90.4
   },
   {
     "id": 87,
     "blockades": [
       [
-        2,
-        2
+        0,
+        1
       ],
       [
         3,
-        3
+        0
       ]
     ],
-    "solutionCount": 7
+    "solutionCount": 6,
+    "nodesExplored": 543,
+    "nodesPerSolution": 90.5
   },
   {
     "id": 88,
     "blockades": [
       [
-        2,
-        3
+        1,
+        2
       ],
       [
-        3,
-        2
+        2,
+        1
       ]
     ],
-    "solutionCount": 7
+    "solutionCount": 6,
+    "nodesExplored": 544,
+    "nodesPerSolution": 90.7
   },
   {
     "id": 89,
     "blockades": [
       [
-        3,
-        1
+        1,
+        2
       ],
       [
-        4,
-        4
+        5,
+        0
       ]
     ],
-    "solutionCount": 7
+    "solutionCount": 12,
+    "nodesExplored": 1092,
+    "nodesPerSolution": 91
   },
   {
     "id": 90,
     "blockades": [
       [
-        3,
-        3
+        1,
+        4
       ],
       [
-        4,
-        0
+        3,
+        4
       ]
     ],
-    "solutionCount": 7
+    "solutionCount": 8,
+    "nodesExplored": 731,
+    "nodesPerSolution": 91.4
   },
   {
     "id": 91,
     "blockades": [
       [
-        4,
-        1
+        0,
+        0
       ],
       [
-        5,
-        2
+        3,
+        1
       ]
     ],
-    "solutionCount": 7
+    "solutionCount": 12,
+    "nodesExplored": 1110,
+    "nodesPerSolution": 92.5
   },
   {
     "id": 92,
     "blockades": [
       [
-        4,
-        3
+        0,
+        0
       ],
       [
-        5,
-        2
+        4,
+        0
       ]
     ],
-    "solutionCount": 7
+    "solutionCount": 17,
+    "nodesExplored": 1577,
+    "nodesPerSolution": 92.8
   },
   {
     "id": 93,
     "blockades": [
       [
-        1,
+        3,
         0
       ],
       [
-        1,
-        4
+        5,
+        0
       ]
     ],
-    "solutionCount": 8
+    "solutionCount": 15,
+    "nodesExplored": 1399,
+    "nodesPerSolution": 93.3
   },
   {
     "id": 94,
     "blockades": [
       [
-        1,
+        2,
         0
       ],
       [
-        3,
+        4,
         0
       ]
     ],
-    "solutionCount": 8
+    "solutionCount": 8,
+    "nodesExplored": 751,
+    "nodesPerSolution": 93.9
   },
   {
     "id": 95,
     "blockades": [
       [
-        1,
-        1
+        0,
+        4
       ],
       [
-        2,
-        0
+        3,
+        3
       ]
     ],
-    "solutionCount": 8
+    "solutionCount": 12,
+    "nodesExplored": 1133,
+    "nodesPerSolution": 94.4
   },
   {
     "id": 96,
     "blockades": [
       [
-        1,
-        1
+        0,
+        0
       ],
       [
-        4,
-        2
+        2,
+        4
       ]
     ],
-    "solutionCount": 8
+    "solutionCount": 12,
+    "nodesExplored": 1159,
+    "nodesPerSolution": 96.6
   },
   {
     "id": 97,
     "blockades": [
       [
         1,
-        2
+        0
       ],
       [
-        4,
+        2,
         1
       ]
     ],
-    "solutionCount": 8
+    "solutionCount": 4,
+    "nodesExplored": 388,
+    "nodesPerSolution": 97
   },
   {
     "id": 98,
     "blockades": [
       [
-        1,
-        2
-      ],
-      [
         4,
         3
+      ],
+      [
+        5,
+        0
       ]
     ],
-    "solutionCount": 8
+    "solutionCount": 17,
+    "nodesExplored": 1655,
+    "nodesPerSolution": 97.4
   },
   {
     "id": 99,
     "blockades": [
       [
-        1,
-        3
+        0,
+        4
       ],
       [
-        2,
-        4
+        4,
+        0
       ]
     ],
-    "solutionCount": 8
+    "solutionCount": 16,
+    "nodesExplored": 1573,
+    "nodesPerSolution": 98.3
   },
   {
     "id": 100,
@@ -1393,59 +1591,83 @@
         3
       ],
       [
-        4,
-        2
+        3,
+        3
       ]
     ],
-    "solutionCount": 8
+    "solutionCount": 4,
+    "nodesExplored": 398,
+    "nodesPerSolution": 99.5
   },
   {
     "id": 101,
     "blockades": [
       [
         1,
-        4
+        2
       ],
       [
-        3,
+        5,
         4
       ]
     ],
-    "solutionCount": 8
+    "solutionCount": 12,
+    "nodesExplored": 1201,
+    "nodesPerSolution": 100.1
   },
   {
     "id": 102,
     "blockades": [
       [
-        2,
-        0
+        0,
+        3
       ],
       [
-        2,
+        3,
         4
       ]
     ],
-    "solutionCount": 8
+    "solutionCount": 6,
+    "nodesExplored": 609,
+    "nodesPerSolution": 101.5
   },
   {
     "id": 103,
     "blockades": [
       [
-        2,
+        0,
         0
       ],
       [
-        4,
-        0
+        2,
+        2
       ]
     ],
-    "solutionCount": 8
+    "solutionCount": 9,
+    "nodesExplored": 925,
+    "nodesPerSolution": 102.8
   },
   {
     "id": 104,
     "blockades": [
       [
+        0,
+        4
+      ],
+      [
         2,
+        2
+      ]
+    ],
+    "solutionCount": 9,
+    "nodesExplored": 939,
+    "nodesPerSolution": 104.3
+  },
+  {
+    "id": 105,
+    "blockades": [
+      [
+        0,
         4
       ],
       [
@@ -1453,1378 +1675,856 @@
         4
       ]
     ],
-    "solutionCount": 8
-  },
-  {
-    "id": 105,
-    "blockades": [
-      [
-        3,
-        0
-      ],
-      [
-        3,
-        4
-      ]
-    ],
-    "solutionCount": 8
+    "solutionCount": 17,
+    "nodesExplored": 1785,
+    "nodesPerSolution": 105
   },
   {
     "id": 106,
     "blockades": [
       [
         3,
-        0
+        1
       ],
       [
-        4,
-        1
+        3,
+        3
       ]
     ],
-    "solutionCount": 8
+    "solutionCount": 6,
+    "nodesExplored": 638,
+    "nodesPerSolution": 106.3
   },
   {
     "id": 107,
     "blockades": [
       [
-        3,
-        4
+        5,
+        0
       ],
       [
-        4,
-        3
+        5,
+        4
       ]
     ],
-    "solutionCount": 8
+    "solutionCount": 20,
+    "nodesExplored": 2128,
+    "nodesPerSolution": 106.4
   },
   {
     "id": 108,
     "blockades": [
       [
-        4,
+        3,
         0
       ],
       [
         4,
-        4
+        1
       ]
     ],
-    "solutionCount": 8
+    "solutionCount": 8,
+    "nodesExplored": 856,
+    "nodesPerSolution": 107
   },
   {
     "id": 109,
     "blockades": [
       [
-        0,
-        0
+        3,
+        4
       ],
       [
-        2,
-        2
+        5,
+        4
       ]
     ],
-    "solutionCount": 9
+    "solutionCount": 15,
+    "nodesExplored": 1620,
+    "nodesPerSolution": 108
   },
   {
     "id": 110,
     "blockades": [
       [
-        0,
+        1,
         2
       ],
       [
         4,
-        0
+        3
       ]
     ],
-    "solutionCount": 9
+    "solutionCount": 8,
+    "nodesExplored": 867,
+    "nodesPerSolution": 108.4
   },
   {
     "id": 111,
     "blockades": [
       [
+        1,
+        4
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "solutionCount": 4,
+    "nodesExplored": 444,
+    "nodesPerSolution": 111
+  },
+  {
+    "id": 112,
+    "blockades": [
+      [
+        1,
+        3
+      ],
+      [
+        4,
+        0
+      ]
+    ],
+    "solutionCount": 5,
+    "nodesExplored": 557,
+    "nodesPerSolution": 111.4
+  },
+  {
+    "id": 113,
+    "blockades": [
+      [
         0,
-        2
+        0
       ],
       [
         4,
         4
       ]
     ],
-    "solutionCount": 9
-  },
-  {
-    "id": 112,
-    "blockades": [
-      [
-        0,
-        4
-      ],
-      [
-        2,
-        2
-      ]
-    ],
-    "solutionCount": 9
-  },
-  {
-    "id": 113,
-    "blockades": [
-      [
-        1,
-        0
-      ],
-      [
-        5,
-        2
-      ]
-    ],
-    "solutionCount": 9
+    "solutionCount": 16,
+    "nodesExplored": 1821,
+    "nodesPerSolution": 113.8
   },
   {
     "id": 114,
     "blockades": [
       [
-        1,
-        1
+        3,
+        3
       ],
       [
-        2,
-        4
+        4,
+        0
       ]
     ],
-    "solutionCount": 9
+    "solutionCount": 7,
+    "nodesExplored": 805,
+    "nodesPerSolution": 115
   },
   {
     "id": 115,
     "blockades": [
       [
-        1,
-        3
+        3,
+        0
       ],
       [
-        2,
-        0
+        3,
+        4
       ]
     ],
-    "solutionCount": 9
+    "solutionCount": 8,
+    "nodesExplored": 931,
+    "nodesPerSolution": 116.4
   },
   {
     "id": 116,
     "blockades": [
       [
-        1,
+        2,
         4
       ],
       [
-        5,
-        2
+        4,
+        4
       ]
     ],
-    "solutionCount": 9
+    "solutionCount": 8,
+    "nodesExplored": 933,
+    "nodesPerSolution": 116.6
   },
   {
     "id": 117,
     "blockades": [
       [
-        2,
+        0,
         0
       ],
       [
-        3,
-        1
+        0,
+        2
       ]
     ],
-    "solutionCount": 9
+    "solutionCount": 10,
+    "nodesExplored": 1169,
+    "nodesPerSolution": 116.9
   },
   {
     "id": 118,
     "blockades": [
       [
-        2,
-        1
+        0,
+        2
       ],
       [
-        3,
-        0
+        0,
+        4
       ]
     ],
-    "solutionCount": 9
+    "solutionCount": 10,
+    "nodesExplored": 1178,
+    "nodesPerSolution": 117.8
   },
   {
     "id": 119,
     "blockades": [
       [
-        2,
-        3
+        3,
+        0
       ],
       [
-        3,
+        5,
         4
       ]
     ],
-    "solutionCount": 9
+    "solutionCount": 12,
+    "nodesExplored": 1430,
+    "nodesPerSolution": 119.2
   },
   {
     "id": 120,
     "blockades": [
       [
-        2,
+        3,
         4
       ],
       [
-        3,
-        3
+        5,
+        0
       ]
     ],
-    "solutionCount": 9
+    "solutionCount": 12,
+    "nodesExplored": 1431,
+    "nodesPerSolution": 119.3
   },
   {
     "id": 121,
     "blockades": [
       [
         3,
-        0
+        4
       ],
       [
         4,
-        3
+        1
       ]
     ],
-    "solutionCount": 9
+    "solutionCount": 9,
+    "nodesExplored": 1079,
+    "nodesPerSolution": 119.9
   },
   {
     "id": 122,
     "blockades": [
       [
         3,
-        2
+        0
       ],
       [
-        5,
-        0
+        4,
+        3
       ]
     ],
-    "solutionCount": 9
+    "solutionCount": 9,
+    "nodesExplored": 1080,
+    "nodesPerSolution": 120
   },
   {
     "id": 123,
     "blockades": [
       [
         3,
-        2
+        1
       ],
       [
-        5,
+        4,
         4
       ]
     ],
-    "solutionCount": 9
+    "solutionCount": 7,
+    "nodesExplored": 852,
+    "nodesPerSolution": 121.7
   },
   {
     "id": 124,
     "blockades": [
       [
-        3,
-        4
-      ],
-      [
         4,
         1
+      ],
+      [
+        5,
+        0
       ]
     ],
-    "solutionCount": 9
+    "solutionCount": 11,
+    "nodesExplored": 1392,
+    "nodesPerSolution": 126.5
   },
   {
     "id": 125,
     "blockades": [
       [
         0,
-        0
+        4
       ],
       [
-        0,
+        4,
         2
       ]
     ],
-    "solutionCount": 10
+    "solutionCount": 12,
+    "nodesExplored": 1520,
+    "nodesPerSolution": 126.7
   },
   {
     "id": 126,
     "blockades": [
       [
-        0,
-        2
+        3,
+        1
       ],
       [
-        0,
-        4
+        4,
+        2
       ]
     ],
-    "solutionCount": 10
+    "solutionCount": 6,
+    "nodesExplored": 765,
+    "nodesPerSolution": 127.5
   },
   {
     "id": 127,
     "blockades": [
       [
-        1,
+        0,
         0
       ],
       [
-        3,
+        0,
         4
       ]
     ],
-    "solutionCount": 10
+    "solutionCount": 20,
+    "nodesExplored": 2584,
+    "nodesPerSolution": 129.2
   },
   {
     "id": 128,
     "blockades": [
       [
-        1,
-        4
+        0,
+        0
       ],
       [
-        3,
-        0
+        4,
+        2
       ]
     ],
-    "solutionCount": 10
+    "solutionCount": 12,
+    "nodesExplored": 1553,
+    "nodesPerSolution": 129.4
   },
   {
     "id": 129,
     "blockades": [
       [
-        2,
+        1,
         0
       ],
       [
-        3,
-        3
+        5,
+        2
       ]
     ],
-    "solutionCount": 10
+    "solutionCount": 9,
+    "nodesExplored": 1174,
+    "nodesPerSolution": 130.4
   },
   {
     "id": 130,
     "blockades": [
       [
-        2,
-        0
+        3,
+        2
       ],
       [
-        4,
-        4
+        5,
+        0
       ]
     ],
-    "solutionCount": 10
+    "solutionCount": 9,
+    "nodesExplored": 1189,
+    "nodesPerSolution": 132.1
   },
   {
     "id": 131,
     "blockades": [
       [
-        2,
-        1
+        0,
+        3
       ],
       [
-        3,
-        4
+        1,
+        0
       ]
     ],
-    "solutionCount": 10
+    "solutionCount": 3,
+    "nodesExplored": 397,
+    "nodesPerSolution": 132.3
   },
   {
     "id": 132,
     "blockades": [
       [
-        2,
-        3
+        1,
+        4
       ],
       [
-        3,
-        0
+        5,
+        2
       ]
     ],
-    "solutionCount": 10
+    "solutionCount": 9,
+    "nodesExplored": 1207,
+    "nodesPerSolution": 134.1
   },
   {
     "id": 133,
     "blockades": [
       [
-        2,
-        4
+        1,
+        1
       ],
       [
-        3,
-        1
+        4,
+        4
       ]
     ],
-    "solutionCount": 10
+    "solutionCount": 5,
+    "nodesExplored": 677,
+    "nodesPerSolution": 135.4
   },
   {
     "id": 134,
     "blockades": [
       [
-        2,
-        4
+        3,
+        2
       ],
       [
-        4,
-        0
+        5,
+        4
       ]
     ],
-    "solutionCount": 10
+    "solutionCount": 9,
+    "nodesExplored": 1274,
+    "nodesPerSolution": 141.6
   },
   {
     "id": 135,
     "blockades": [
       [
-        5,
-        0
+        3,
+        2
       ],
       [
-        5,
-        2
+        4,
+        1
       ]
     ],
-    "solutionCount": 10
+    "solutionCount": 6,
+    "nodesExplored": 851,
+    "nodesPerSolution": 141.8
   },
   {
     "id": 136,
     "blockades": [
       [
-        5,
-        2
+        4,
+        0
       ],
       [
-        5,
+        4,
         4
       ]
     ],
-    "solutionCount": 10
+    "solutionCount": 8,
+    "nodesExplored": 1138,
+    "nodesPerSolution": 142.3
   },
   {
     "id": 137,
     "blockades": [
       [
-        0,
-        0
+        1,
+        2
       ],
       [
-        1,
-        1
+        3,
+        0
       ]
     ],
-    "solutionCount": 11
+    "solutionCount": 4,
+    "nodesExplored": 576,
+    "nodesPerSolution": 144
   },
   {
     "id": 138,
     "blockades": [
       [
-        0,
-        1
+        3,
+        3
       ],
       [
-        3,
+        4,
         2
       ]
     ],
-    "solutionCount": 11
+    "solutionCount": 6,
+    "nodesExplored": 865,
+    "nodesPerSolution": 144.2
   },
   {
     "id": 139,
     "blockades": [
       [
-        0,
-        1
+        2,
+        0
       ],
       [
-        3,
-        4
+        5,
+        1
       ]
     ],
-    "solutionCount": 11
+    "solutionCount": 6,
+    "nodesExplored": 875,
+    "nodesPerSolution": 145.8
   },
   {
     "id": 140,
     "blockades": [
       [
-        0,
-        3
+        3,
+        4
       ],
       [
-        3,
-        0
+        4,
+        3
       ]
     ],
-    "solutionCount": 11
+    "solutionCount": 8,
+    "nodesExplored": 1220,
+    "nodesPerSolution": 152.5
   },
   {
     "id": 141,
     "blockades": [
       [
         0,
-        3
+        1
       ],
       [
-        3,
-        2
+        1,
+        4
       ]
     ],
-    "solutionCount": 11
+    "solutionCount": 3,
+    "nodesExplored": 461,
+    "nodesPerSolution": 153.7
   },
   {
     "id": 142,
     "blockades": [
       [
-        0,
+        1,
         4
       ],
       [
-        1,
-        3
+        4,
+        1
       ]
     ],
-    "solutionCount": 11
+    "solutionCount": 5,
+    "nodesExplored": 802,
+    "nodesPerSolution": 160.4
   },
   {
     "id": 143,
     "blockades": [
       [
-        2,
-        0
+        0,
+        3
       ],
       [
-        5,
-        3
+        4,
+        1
       ]
     ],
-    "solutionCount": 11
+    "solutionCount": 5,
+    "nodesExplored": 803,
+    "nodesPerSolution": 160.6
   },
   {
     "id": 144,
     "blockades": [
       [
-        2,
-        2
+        4,
+        3
+      ],
+      [
+        5,
+        4
+      ]
+    ],
+    "solutionCount": 11,
+    "nodesExplored": 1775,
+    "nodesPerSolution": 161.4
+  },
+  {
+    "id": 145,
+    "blockades": [
+      [
+        1,
+        3
       ],
       [
         5,
         1
       ]
     ],
-    "solutionCount": 11
-  },
-  {
-    "id": 145,
-    "blockades": [
-      [
-        2,
-        2
-      ],
-      [
-        5,
-        3
-      ]
-    ],
-    "solutionCount": 11
+    "solutionCount": 5,
+    "nodesExplored": 819,
+    "nodesPerSolution": 163.8
   },
   {
     "id": 146,
     "blockades": [
       [
         2,
-        4
+        0
       ],
       [
-        5,
-        1
+        4,
+        2
       ]
     ],
-    "solutionCount": 11
+    "solutionCount": 4,
+    "nodesExplored": 663,
+    "nodesPerSolution": 165.8
   },
   {
     "id": 147,
     "blockades": [
       [
-        4,
-        1
+        1,
+        2
       ],
       [
-        5,
-        0
+        3,
+        4
       ]
     ],
-    "solutionCount": 11
+    "solutionCount": 4,
+    "nodesExplored": 666,
+    "nodesPerSolution": 166.5
   },
   {
     "id": 148,
     "blockades": [
       [
-        4,
-        3
+        2,
+        4
       ],
       [
         5,
-        4
+        3
       ]
     ],
-    "solutionCount": 11
+    "solutionCount": 6,
+    "nodesExplored": 1007,
+    "nodesPerSolution": 167.8
   },
   {
     "id": 149,
     "blockades": [
       [
-        0,
-        0
+        2,
+        1
       ],
       [
-        2,
-        4
+        4,
+        1
       ]
     ],
-    "solutionCount": 12
+    "solutionCount": 4,
+    "nodesExplored": 687,
+    "nodesPerSolution": 171.8
   },
   {
     "id": 150,
     "blockades": [
       [
-        0,
-        0
+        3,
+        2
       ],
       [
-        3,
-        1
+        4,
+        3
       ]
     ],
-    "solutionCount": 12
+    "solutionCount": 6,
+    "nodesExplored": 1032,
+    "nodesPerSolution": 172
   },
   {
     "id": 151,
     "blockades": [
       [
-        0,
+        1,
+        1
+      ],
+      [
+        5,
+        3
+      ]
+    ],
+    "solutionCount": 5,
+    "nodesExplored": 889,
+    "nodesPerSolution": 177.8
+  },
+  {
+    "id": 152,
+    "blockades": [
+      [
+        1,
         0
+      ],
+      [
+        4,
+        3
+      ]
+    ],
+    "solutionCount": 5,
+    "nodesExplored": 902,
+    "nodesPerSolution": 180.4
+  },
+  {
+    "id": 153,
+    "blockades": [
+      [
+        3,
+        1
+      ],
+      [
+        4,
+        0
+      ]
+    ],
+    "solutionCount": 4,
+    "nodesExplored": 722,
+    "nodesPerSolution": 180.5
+  },
+  {
+    "id": 154,
+    "blockades": [
+      [
+        2,
+        4
       ],
       [
         4,
         2
       ]
     ],
-    "solutionCount": 12
-  },
-  {
-    "id": 152,
-    "blockades": [
-      [
-        0,
-        2
-      ],
-      [
-        3,
-        1
-      ]
-    ],
-    "solutionCount": 12
-  },
-  {
-    "id": 153,
-    "blockades": [
-      [
-        0,
-        2
-      ],
-      [
-        3,
-        3
-      ]
-    ],
-    "solutionCount": 12
-  },
-  {
-    "id": 154,
-    "blockades": [
-      [
-        0,
-        4
-      ],
-      [
-        2,
-        0
-      ]
-    ],
-    "solutionCount": 12
+    "solutionCount": 4,
+    "nodesExplored": 734,
+    "nodesPerSolution": 183.5
   },
   {
     "id": 155,
     "blockades": [
       [
         0,
-        4
+        1
       ],
       [
-        3,
-        3
+        2,
+        1
       ]
     ],
-    "solutionCount": 12
+    "solutionCount": 3,
+    "nodesExplored": 556,
+    "nodesPerSolution": 185.3
   },
   {
     "id": 156,
     "blockades": [
       [
         0,
-        4
+        3
       ],
       [
-        4,
-        2
+        2,
+        3
       ]
     ],
-    "solutionCount": 12
+    "solutionCount": 3,
+    "nodesExplored": 556,
+    "nodesPerSolution": 185.3
   },
   {
     "id": 157,
     "blockades": [
       [
-        1,
+        0,
         2
       ],
       [
-        5,
-        0
+        2,
+        2
       ]
     ],
-    "solutionCount": 12
+    "solutionCount": 2,
+    "nodesExplored": 401,
+    "nodesPerSolution": 200.5
   },
   {
     "id": 158,
     "blockades": [
       [
-        1,
-        2
-      ],
-      [
-        5,
-        4
-      ]
-    ],
-    "solutionCount": 12
-  },
-  {
-    "id": 159,
-    "blockades": [
-      [
-        2,
-        0
-      ],
-      [
-        2,
-        2
-      ]
-    ],
-    "solutionCount": 12
-  },
-  {
-    "id": 160,
-    "blockades": [
-      [
-        2,
-        1
-      ],
-      [
-        5,
-        0
-      ]
-    ],
-    "solutionCount": 12
-  },
-  {
-    "id": 161,
-    "blockades": [
-      [
-        2,
-        1
-      ],
-      [
-        5,
-        2
-      ]
-    ],
-    "solutionCount": 12
-  },
-  {
-    "id": 162,
-    "blockades": [
-      [
-        2,
-        2
-      ],
-      [
-        2,
-        4
-      ]
-    ],
-    "solutionCount": 12
-  },
-  {
-    "id": 163,
-    "blockades": [
-      [
-        2,
-        3
-      ],
-      [
-        5,
-        2
-      ]
-    ],
-    "solutionCount": 12
-  },
-  {
-    "id": 164,
-    "blockades": [
-      [
-        2,
-        3
-      ],
-      [
-        5,
-        4
-      ]
-    ],
-    "solutionCount": 12
-  },
-  {
-    "id": 165,
-    "blockades": [
-      [
-        3,
-        0
-      ],
-      [
-        3,
-        2
-      ]
-    ],
-    "solutionCount": 12
-  },
-  {
-    "id": 166,
-    "blockades": [
-      [
-        3,
-        0
-      ],
-      [
-        5,
-        4
-      ]
-    ],
-    "solutionCount": 12
-  },
-  {
-    "id": 167,
-    "blockades": [
-      [
-        3,
-        2
-      ],
-      [
-        3,
-        4
-      ]
-    ],
-    "solutionCount": 12
-  },
-  {
-    "id": 168,
-    "blockades": [
-      [
-        3,
-        4
-      ],
-      [
-        5,
-        0
-      ]
-    ],
-    "solutionCount": 12
-  },
-  {
-    "id": 169,
-    "blockades": [
-      [
         0,
         1
-      ],
-      [
-        5,
-        2
-      ]
-    ],
-    "solutionCount": 14
-  },
-  {
-    "id": 170,
-    "blockades": [
-      [
-        0,
-        2
-      ],
-      [
-        5,
-        1
-      ]
-    ],
-    "solutionCount": 14
-  },
-  {
-    "id": 171,
-    "blockades": [
-      [
-        0,
-        2
-      ],
-      [
-        5,
-        3
-      ]
-    ],
-    "solutionCount": 14
-  },
-  {
-    "id": 172,
-    "blockades": [
-      [
-        0,
-        3
-      ],
-      [
-        5,
-        2
-      ]
-    ],
-    "solutionCount": 14
-  },
-  {
-    "id": 173,
-    "blockades": [
-      [
-        0,
-        0
-      ],
-      [
-        2,
-        0
-      ]
-    ],
-    "solutionCount": 15
-  },
-  {
-    "id": 174,
-    "blockades": [
-      [
-        0,
-        4
-      ],
-      [
-        2,
-        4
-      ]
-    ],
-    "solutionCount": 15
-  },
-  {
-    "id": 175,
-    "blockades": [
-      [
-        3,
-        0
-      ],
-      [
-        5,
-        0
-      ]
-    ],
-    "solutionCount": 15
-  },
-  {
-    "id": 176,
-    "blockades": [
-      [
-        3,
-        4
-      ],
-      [
-        5,
-        4
-      ]
-    ],
-    "solutionCount": 15
-  },
-  {
-    "id": 177,
-    "blockades": [
-      [
-        0,
-        0
       ],
       [
         4,
-        4
-      ]
-    ],
-    "solutionCount": 16
-  },
-  {
-    "id": 178,
-    "blockades": [
-      [
-        0,
-        4
-      ],
-      [
-        4,
-        0
-      ]
-    ],
-    "solutionCount": 16
-  },
-  {
-    "id": 179,
-    "blockades": [
-      [
-        1,
-        0
-      ],
-      [
-        5,
-        4
-      ]
-    ],
-    "solutionCount": 16
-  },
-  {
-    "id": 180,
-    "blockades": [
-      [
-        1,
-        4
-      ],
-      [
-        5,
-        0
-      ]
-    ],
-    "solutionCount": 16
-  },
-  {
-    "id": 181,
-    "blockades": [
-      [
-        0,
-        0
-      ],
-      [
-        1,
         3
       ]
     ],
-    "solutionCount": 17
-  },
-  {
-    "id": 182,
-    "blockades": [
-      [
-        0,
-        0
-      ],
-      [
-        4,
-        0
-      ]
-    ],
-    "solutionCount": 17
-  },
-  {
-    "id": 183,
-    "blockades": [
-      [
-        0,
-        4
-      ],
-      [
-        1,
-        1
-      ]
-    ],
-    "solutionCount": 17
-  },
-  {
-    "id": 184,
-    "blockades": [
-      [
-        0,
-        4
-      ],
-      [
-        4,
-        4
-      ]
-    ],
-    "solutionCount": 17
-  },
-  {
-    "id": 185,
-    "blockades": [
-      [
-        1,
-        0
-      ],
-      [
-        5,
-        0
-      ]
-    ],
-    "solutionCount": 17
-  },
-  {
-    "id": 186,
-    "blockades": [
-      [
-        1,
-        4
-      ],
-      [
-        5,
-        4
-      ]
-    ],
-    "solutionCount": 17
-  },
-  {
-    "id": 187,
-    "blockades": [
-      [
-        4,
-        1
-      ],
-      [
-        5,
-        4
-      ]
-    ],
-    "solutionCount": 17
-  },
-  {
-    "id": 188,
-    "blockades": [
-      [
-        4,
-        3
-      ],
-      [
-        5,
-        0
-      ]
-    ],
-    "solutionCount": 17
-  },
-  {
-    "id": 189,
-    "blockades": [
-      [
-        0,
-        0
-      ],
-      [
-        0,
-        4
-      ]
-    ],
-    "solutionCount": 20
-  },
-  {
-    "id": 190,
-    "blockades": [
-      [
-        5,
-        0
-      ],
-      [
-        5,
-        4
-      ]
-    ],
-    "solutionCount": 20
-  },
-  {
-    "id": 191,
-    "blockades": [
-      [
-        0,
-        0
-      ],
-      [
-        3,
-        3
-      ]
-    ],
-    "solutionCount": 23
-  },
-  {
-    "id": 192,
-    "blockades": [
-      [
-        0,
-        4
-      ],
-      [
-        3,
-        1
-      ]
-    ],
-    "solutionCount": 23
-  },
-  {
-    "id": 193,
-    "blockades": [
-      [
-        2,
-        1
-      ],
-      [
-        5,
-        4
-      ]
-    ],
-    "solutionCount": 23
-  },
-  {
-    "id": 194,
-    "blockades": [
-      [
-        2,
-        3
-      ],
-      [
-        5,
-        0
-      ]
-    ],
-    "solutionCount": 23
-  },
-  {
-    "id": 195,
-    "blockades": [
-      [
-        0,
-        0
-      ],
-      [
-        5,
-        1
-      ]
-    ],
-    "solutionCount": 24
-  },
-  {
-    "id": 196,
-    "blockades": [
-      [
-        0,
-        1
-      ],
-      [
-        5,
-        0
-      ]
-    ],
-    "solutionCount": 24
-  },
-  {
-    "id": 197,
-    "blockades": [
-      [
-        0,
-        3
-      ],
-      [
-        5,
-        4
-      ]
-    ],
-    "solutionCount": 24
-  },
-  {
-    "id": 198,
-    "blockades": [
-      [
-        0,
-        4
-      ],
-      [
-        5,
-        3
-      ]
-    ],
-    "solutionCount": 24
-  },
-  {
-    "id": 199,
-    "blockades": [
-      [
-        0,
-        0
-      ],
-      [
-        5,
-        3
-      ]
-    ],
-    "solutionCount": 25
-  },
-  {
-    "id": 200,
-    "blockades": [
-      [
-        0,
-        1
-      ],
-      [
-        5,
-        4
-      ]
-    ],
-    "solutionCount": 25
-  },
-  {
-    "id": 201,
-    "blockades": [
-      [
-        0,
-        3
-      ],
-      [
-        5,
-        0
-      ]
-    ],
-    "solutionCount": 25
-  },
-  {
-    "id": 202,
-    "blockades": [
-      [
-        0,
-        4
-      ],
-      [
-        5,
-        1
-      ]
-    ],
-    "solutionCount": 25
+    "solutionCount": 5,
+    "nodesExplored": 1007,
+    "nodesPerSolution": 201.4
   }
 ]

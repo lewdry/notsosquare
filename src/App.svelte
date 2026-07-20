@@ -6,6 +6,7 @@ import GameControls from "./components/GameControls.svelte";
 import Inventory from "./components/Inventory.svelte";
 import Piece from "./components/Piece.svelte";
 import { isClientPointInsideRect } from "./lib/dragGeometry.js";
+import WinBounceCanvas from "./components/WinBounceCanvas.svelte";
 
 // Keep the board and both piece trays on one horizontal line at every viewport size.
 let windowWidth = $state(500);
@@ -129,7 +130,7 @@ function handleCloseCelebration() {
         Π
       </button>
       <h1 class="text-2xl leading-none font-black tracking-tight text-neutral uppercase">
-        {gameStore.isNoIMode ? "Nowsosquare" : "Notsosquare"}
+        {gameStore.isNoIMode ? "Notsosquare" : "Notsosquare+"}
       </h1>
     </div>
   </header>
@@ -152,7 +153,7 @@ function handleCloseCelebration() {
       <div class="order-1 col-span-2 flex flex-col items-center sm:order-2 sm:col-span-1">
         <Board {cellSize} />
         <p class="mt-1 text-center text-[10px] font-semibold text-stone-500 select-none">
-          Drag to move · tap to rotate · double-tap to return
+          Drag to move · tap to rotate · double-tap to remove
         </p>
       </div>
 
@@ -219,6 +220,9 @@ function handleCloseCelebration() {
       />
     </div>
   {/if}
+
+  <!-- Solitaire-style bounce-off-screen win animation -->
+  <WinBounceCanvas {cellSize} />
 
   <!-- Celebration Modal / Banner overlay -->
   {#if gameStore.showWinCelebration}
