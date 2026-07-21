@@ -77,7 +77,7 @@
 
     // Subtle top-left highlight glint
     ctx.fillStyle = "white";
-    ctx.globalAlpha = alpha * 0.24;
+    ctx.globalAlpha = alpha * 0.12;
     for (const [br, bc] of shape) {
       const bx = ox + bc * (bs + gap);
       const by = oy + br * (bs + gap);
@@ -117,16 +117,26 @@
       p.x  += p.vx;
       p.y  += p.vy;
 
-      // Rough bounding box of the piece to detect off-screen
+      // Rough bounding box of the piece to detect screen edges
       const pieceW = (Math.max(...p.shape.map(([, c]) => c)) + 1) * cellSize;
       const pieceH = (Math.max(...p.shape.map(([r]) => r)) + 1) * cellSize;
-      const margin = Math.max(pieceW, pieceH) * 1.5;
 
-      if (
-        p.x + pieceW < -margin || p.x > w + margin ||
-        p.y + pieceH < -margin || p.y > h + margin
-      ) {
-        p.alpha = 0;
+      // Bounce horizontally
+      if (p.x < 0) {
+        p.x = 0;
+        p.vx = Math.abs(p.vx);
+      } else if (p.x + pieceW > w) {
+        p.x = w - pieceW;
+        p.vx = -Math.abs(p.vx);
+      }
+
+      // Bounce vertically
+      if (p.y < 0) {
+        p.y = 0;
+        p.vy = Math.abs(p.vy);
+      } else if (p.y + pieceH > h) {
+        p.y = h - pieceH;
+        p.vy = -Math.abs(p.vy);
       }
     }
 

@@ -242,7 +242,7 @@ export class GameStore {
       this.isWinning = false;
       this.showWinCelebration = true;
       this.winTimeout = null;
-    }, 1400);
+    }, 1300);
   }
 
   getSolutions() {
