@@ -15,16 +15,27 @@ let availableWidth = $derived(Math.max(windowWidth - 32, 0));
 let isMobile = $derived(windowWidth < 640);
 let sideColumnWidth = $derived(Math.max(52, Math.min(112, Math.floor(availableWidth * 0.2))));
 let cellSize = $derived(isMobile
-  ? Math.max(20, Math.min(55, Math.floor((availableWidth - 16) / 5), Math.floor((windowHeight - 205) / 6)))
-  : Math.max(24, Math.min(64, Math.floor((availableWidth - sideColumnWidth * 2 - 24) / 5))));
+  ? Math.max(20, Math.min(55, Math.floor((availableWidth - 16) / gameStore.gridWidth), Math.floor((windowHeight - 205) / gameStore.gridHeight)))
+  : Math.max(24, Math.min(64, Math.floor((availableWidth - sideColumnWidth * 2 - 24) / gameStore.gridWidth))));
 let inventorySlotSize = $derived(
   isMobile ? Math.max(34, Math.min(52, Math.floor((availableWidth - 6) / 7))) : sideColumnWidth,
 );
 let inventoryCellSize = $derived(
   Math.max(10, Math.min(cellSize * 0.6, (inventorySlotSize - 4) / 4)),
 );
-let leftInventoryIds = $derived(gameStore.isNoIMode ? ["T", "O", "J"] : ["T", "O", "J", "L"]);
-let rightInventoryIds = $derived(gameStore.isNoIMode ? ["L", "Z", "S"] : ["I", "Z", "S"]);
+let leftInventoryIds = $derived(
+  gameStore.isNoIMode
+    ? ["T", "O", "J"]
+    : gameStore.isNoTMode
+      ? ["O", "L", "J"]
+      : ["T", "O", "J", "L"],
+);
+let rightInventoryIds = $derived(
+  gameStore.isNoIMode
+    ? ["L", "Z", "S"]
+    : ["I", "Z", "S"],
+);
+
 
 onMount(() => {
   gameStore.connectStorage(window.localStorage);
@@ -125,12 +136,12 @@ function handleCloseCelebration() {
         type="button"
         class="w-6 h-6 bg-neutral flex items-center justify-center text-white font-black text-base shadow-md cursor-pointer"
         onclick={() => gameStore.toggleGameMode()}
-        aria-label="Toggle No I Squared mode"
+        aria-label="Cycle game mode"
       >
         Π
       </button>
       <h1 class="text-2xl leading-none font-black tracking-tight text-neutral uppercase">
-        {gameStore.isNoIMode ? "Notsosquare" : "Notsosquare+"}
+        {gameStore.modeTitle}
       </h1>
     </div>
   </header>

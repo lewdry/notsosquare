@@ -1,12 +1,29 @@
 import levels from "../../levels.json";
 import noILevels from "../../levels_5x5_1peg_noI.json";
+import noTLevels from "../../levels_4x6_0peg_noT.json";
 
 export const GRID_WIDTH = 5;
 export const GRID_HEIGHT = 6;
 export const GRID_SIZE = GRID_WIDTH * GRID_HEIGHT;
 export const NO_I_GRID_HEIGHT = 5;
+export const NO_T_GRID_WIDTH = 4;
 export const STANDARD_PIECE_IDS = ["I", "O", "T", "L", "J", "S", "Z"];
 export const NO_I_PIECE_IDS = ["O", "T", "L", "J", "S", "Z"];
+export const NO_T_PIECE_IDS = ["O", "L", "J", "I", "Z", "S"];
+
+export function getGridWidth(mode = "standard") {
+  return mode === "no-t" ? NO_T_GRID_WIDTH : GRID_WIDTH;
+}
+
+export function getGridHeight(mode = "standard") {
+  return mode === "no-i" ? NO_I_GRID_HEIGHT : GRID_HEIGHT;
+}
+
+export function getPieceIds(mode = "standard") {
+  if (mode === "no-i") return NO_I_PIECE_IDS;
+  if (mode === "no-t") return NO_T_PIECE_IDS;
+  return STANDARD_PIECE_IDS;
+}
 
 export const TETROMINOES = {
   I: [
@@ -31,13 +48,13 @@ export const TETROMINOES = {
     [0, 0],
     [0, 1],
     [0, 2],
-    [1, 2],
+    [1, 0],
   ],
   J: [
     [0, 0],
     [0, 1],
     [0, 2],
-    [1, 0],
+    [1, 2],
   ],
   S: [
     [0, 1],
@@ -125,6 +142,7 @@ export const PIECE_ORIENTATIONS = Object.entries(TETROMINOES).reduce((acc, [name
 /** Get every puzzle available for a game mode. */
 export function getLevels(mode = "standard") {
   if (mode === "no-i") return noILevels;
+  if (mode === "no-t") return noTLevels;
   return levels;
 }
 
@@ -133,8 +151,9 @@ export function getLevels(mode = "standard") {
  * Each solution contains placements compatible with Piece.svelte.
  */
 export function findSolutions(blockades, mode = "standard") {
-  const gridHeight = mode === "no-i" ? NO_I_GRID_HEIGHT : GRID_HEIGHT;
-  const pieceIds = mode === "no-i" ? NO_I_PIECE_IDS : STANDARD_PIECE_IDS;
+  const gridWidth = getGridWidth(mode);
+  const gridHeight = getGridHeight(mode);
+  const pieceIds = getPieceIds(mode);
   const occupied = new Set(blockades.map(([r, c]) => `${r},${c}`));
   const solutions = [];
 
@@ -142,7 +161,7 @@ export function findSolutions(blockades, mode = "standard") {
     return shape.every(([dr, dc]) => {
       const r = row + dr;
       const c = col + dc;
-      return r >= 0 && r < gridHeight && c >= 0 && c < GRID_WIDTH && !occupied.has(`${r},${c}`);
+      return r >= 0 && r < gridHeight && c >= 0 && c < gridWidth && !occupied.has(`${r},${c}`);
     });
   }
 
@@ -156,7 +175,7 @@ export function findSolutions(blockades, mode = "standard") {
 
   function findFirstEmptyCell() {
     for (let row = 0; row < gridHeight; row++) {
-      for (let col = 0; col < GRID_WIDTH; col++) {
+      for (let col = 0; col < gridWidth; col++) {
         if (!occupied.has(`${row},${col}`)) return [row, col];
       }
     }
@@ -221,7 +240,8 @@ export function validatePlacement(
   placedPieces,
   mode = "standard",
 ) {
-  const gridHeight = mode === "no-i" ? NO_I_GRID_HEIGHT : GRID_HEIGHT;
+  const gridWidth = getGridWidth(mode);
+  const gridHeight = getGridHeight(mode);
   const rotations = PIECE_ORIENTATIONS[pieceId];
   if (!rotations) return { valid: false, reason: "Invalid piece ID" };
 
@@ -233,7 +253,7 @@ export function validatePlacement(
     const c = col + dc;
 
     // Bounds check
-    if (r < 0 || r >= gridHeight || c < 0 || c >= GRID_WIDTH) {
+    if (r < 0 || r >= gridHeight || c < 0 || c >= gridWidth) {
       return { valid: false, reason: "Out of bounds" };
     }
 
@@ -268,11 +288,9 @@ export function validatePlacement(
 
 /**
  * Verify if the complete board has been solved.
- * Since the grid is 6x5 (30 cells), blockades cover 2 cells, and 7 tetrominoes cover 28 cells.
- * If 7 pieces are placed and all placements are valid, the board is solved.
  */
 export function checkWinCondition(placedPieces, blockades, mode = "standard") {
-  const pieceIds = mode === "no-i" ? NO_I_PIECE_IDS : STANDARD_PIECE_IDS;
+  const pieceIds = getPieceIds(mode);
   if (placedPieces.length !== pieceIds.length) return false;
 
   // Verify each piece placement is valid relative to others and blockades
@@ -293,3 +311,4 @@ export function checkWinCondition(placedPieces, blockades, mode = "standard") {
 
   return true;
 }
+

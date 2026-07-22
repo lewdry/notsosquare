@@ -45,10 +45,16 @@ const previewCells = $derived.by(() => {
       {#each Array(gameStore.gridWidth) as _, c}
         {@const blocked = isBlockade(r, c, gameStore.blockades)}
         {@const isPreview = previewCells.some(([pr, pc]) => pr === r && pc === c)}
+        {@const isEven = (r + c) % 2 === 0}
         <div
           class="relative flex items-center justify-center transition-all duration-150
-                 {blocked ? 'bg-transparent' : 'bg-stone-100/90'} 
-                 {isPreview ? 'bg-indigo-200/55 outline outline-2 outline-indigo-400' : ''}"
+                 {blocked
+                   ? 'bg-transparent'
+                   : isPreview
+                     ? 'bg-indigo-200/55 outline outline-2 outline-indigo-400'
+                     : isEven
+                       ? 'bg-stone-100/90'
+                       : 'bg-stone-200/45'}"
           style="
             width: {cellSize - 4}px;
             height: {cellSize - 4}px;

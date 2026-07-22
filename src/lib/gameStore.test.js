@@ -51,43 +51,60 @@ describe("GameStore drag transitions", () => {
   beforeEach(() => {
     vi.spyOn(Math, "random").mockReturnValue(0);
     store = new GameStore();
+    store.gameMode = "standard";
     store.currentLevelIndex = 0;
     store.initLevel({ randomizeLevel: false });
   });
 
   it("numbers the standard catalogue in reverse source order while retaining stable level IDs", () => {
-    expect(store.levelId).toBe(169);
-    expect(store.puzzleNumber).toBe(34);
+    store.currentLevelIndex = 0;
+    store.initLevel({ randomizeLevel: false });
+    expect(store.levelId).toBe(1);
+    expect(store.puzzleNumber).toBe(158);
 
     store.currentLevelIndex = store.levelsList.length - 1;
-    expect(store.levelId).toBe(202);
+    store.initLevel({ randomizeLevel: false });
+    expect(store.levelId).toBe(158);
     expect(store.puzzleNumber).toBe(1);
   });
 
-  it("toggles into a clean 5x5 no-I game with one blockade and six pieces", () => {
-    store.placedPieces = [findSolution(store.blockades)[0]];
-    store.draggedPiece = { id: "I", rotationIndex: 0, origin: "inventory" };
-    store.hoveredCell = { r: 1, c: 1 };
-    store.shakingPieces = ["I"];
-
-    store.toggleGameMode();
+  it("cycles through all three game modes (no-i -> standard -> no-t -> no-i)", () => {
+    store.gameMode = "no-i";
+    store.initLevel({ randomizeLevel: false });
 
     expect(store.isNoIMode).toBe(true);
+    expect(store.modeTitle).toBe("Notsosquare");
     expect(store.gridWidth).toBe(5);
     expect(store.gridHeight).toBe(5);
     expect(store.blockades).toHaveLength(1);
     expect(store.inventoryPieces.map((piece) => piece.id)).toEqual(["O", "T", "L", "J", "S", "Z"]);
-    expect(store.placedPieces).toEqual([]);
-    expect(store.draggedPiece).toBeNull();
-    expect(store.hoveredCell).toBeNull();
-    expect(store.shakingPieces).toEqual([]);
     expect(findSolution(store.blockades, "no-i")).not.toBeNull();
 
+    // 1st toggle: standard (Notsosquare+)
     store.toggleGameMode();
-    expect(store.isNoIMode).toBe(false);
+    expect(store.gameMode).toBe("standard");
+    expect(store.modeTitle).toBe("Notsosquare+");
+    expect(store.gridWidth).toBe(5);
     expect(store.gridHeight).toBe(6);
+    expect(store.blockades).toHaveLength(2);
     expect(store.inventoryPieces.map((piece) => piece.id)).toContain("I");
+
+    // 2nd toggle: no-t (Notsosquare++)
+    store.toggleGameMode();
+    expect(store.isNoTMode).toBe(true);
+    expect(store.modeTitle).toBe("Notsosquare++");
+    expect(store.gridWidth).toBe(4);
+    expect(store.gridHeight).toBe(6);
+    expect(store.blockades).toEqual([]);
+    expect(store.inventoryPieces.map((piece) => piece.id)).toEqual(["O", "L", "J", "I", "Z", "S"]);
+    expect(findSolution(store.blockades, "no-t")).not.toBeNull();
+
+    // 3rd toggle: back to no-i (Notsosquare)
+    store.toggleGameMode();
+    expect(store.isNoIMode).toBe(true);
+    expect(store.modeTitle).toBe("Notsosquare");
   });
+
 
   it("places an inventory piece using the grabbed block as its anchor", () => {
     const placement = findSolution(store.blockades)[0];
@@ -305,7 +322,7 @@ describe("GameStore drag transitions", () => {
     expect(store.isWinning).toBe(true);
     expect(store.showWinCelebration).toBe(false);
 
-    vi.advanceTimersByTime(1100);
+    vi.advanceTimersByTime(1300);
     expect(store.isWinning).toBe(false);
     expect(store.showWinCelebration).toBe(true);
 

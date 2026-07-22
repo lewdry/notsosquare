@@ -28,13 +28,15 @@ function skipPuzzle() {
     >
       Reset
     </button>
-    <button
-      type="button"
-      onclick={skipPuzzle}
-      class="btn btn-ghost btn-sm h-8 min-h-8 font-bold text-stone-600 border border-stone-200/50 hover:bg-stone-100"
-    >
-      Skip
-    </button>
+    {#if !gameStore.isNoTMode}
+      <button
+        type="button"
+        onclick={skipPuzzle}
+        class="btn btn-ghost btn-sm h-8 min-h-8 font-bold text-stone-600 border border-stone-200/50 hover:bg-stone-100"
+      >
+        Skip
+      </button>
+    {/if}
     <button
       type="button"
       onclick={() => gameStore.requestHint()}

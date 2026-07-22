@@ -97,4 +97,19 @@ describe("Game Tiling Logic", () => {
     expect(solutions.length).toBeGreaterThan(1);
     expect(solutions.every((solution) => checkWinCondition(solution, blockades))).toBe(true);
   });
+
+  it("finds solution and validates win condition for no-t (Notsosquare++) mode", () => {
+    const noTLevels = getLevels("no-t");
+    expect(noTLevels).toHaveLength(1);
+    const blockades = noTLevels[0].blockades;
+    expect(blockades).toEqual([]);
+
+    const solutions = findSolutions(blockades, "no-t");
+    expect(solutions).toHaveLength(2);
+    const solution = findSolution(blockades, "no-t");
+    expect(solution).toHaveLength(6);
+    expect(solution.some((p) => p.id === "T")).toBe(false);
+    expect(checkWinCondition(solution, blockades, "no-t")).toBe(true);
+  });
 });
+

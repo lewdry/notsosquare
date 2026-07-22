@@ -2,13 +2,11 @@ import { clientPointToGridCell } from "./dragGeometry.js";
 import {
   checkWinCondition,
   findSolutions,
-  GRID_HEIGHT,
-  GRID_WIDTH,
+  getGridHeight,
+  getGridWidth,
   getLevels,
-  NO_I_GRID_HEIGHT,
-  NO_I_PIECE_IDS,
+  getPieceIds,
   PIECE_ORIENTATIONS,
-  STANDARD_PIECE_IDS,
   validatePlacement,
 } from "./game.js";
 
@@ -20,7 +18,7 @@ function placementsMatch(a, b) {
 }
 
 export class GameStore {
-  // Current active selections
+  // Current active selections: "no-i" | "standard" | "no-t"
   gameMode = $state("no-i");
   currentLevelIndex = $state(0);
 
@@ -79,23 +77,34 @@ export class GameStore {
   // Blockades for active level
   get blockades() {
     if (!this.activeLevel) return [];
+    if (!this.activeLevel.blockades && !this.activeLevel.blockade) return [];
     return this.activeLevel.blockades || [this.activeLevel.blockade];
   }
 
   get gridWidth() {
-    return GRID_WIDTH;
+    return getGridWidth(this.gameMode);
   }
 
   get gridHeight() {
-    return this.gameMode === "no-i" ? NO_I_GRID_HEIGHT : GRID_HEIGHT;
+    return getGridHeight(this.gameMode);
   }
 
   get pieceIds() {
-    return this.gameMode === "no-i" ? NO_I_PIECE_IDS : STANDARD_PIECE_IDS;
+    return getPieceIds(this.gameMode);
   }
 
   get isNoIMode() {
     return this.gameMode === "no-i";
+  }
+
+  get isNoTMode() {
+    return this.gameMode === "no-t";
+  }
+
+  get modeTitle() {
+    if (this.gameMode === "no-i") return "Notsosquare";
+    if (this.gameMode === "standard") return "Notsosquare+";
+    return "Notsosquare++";
   }
 
   // Solved state
@@ -112,7 +121,7 @@ export class GameStore {
   // The catalogue is stored hardest-to-easiest, so present its reverse order:
   // puzzle 1 is the easiest and the final number is the hardest.
   get puzzleNumber() {
-    if (this.gameMode === "no-i") return this.levelId;
+    if (this.gameMode === "no-i" || this.gameMode === "no-t") return this.levelId;
     return this.levelId ? this.totalPuzzleCount - this.levelId + 1 : 0;
   }
 
@@ -128,7 +137,9 @@ export class GameStore {
   }
 
   get progressKey() {
-    return this.gameMode === "no-i" ? `no-i:${this.levelId}` : this.levelId;
+    if (this.gameMode === "no-i") return `no-i:${this.levelId}`;
+    if (this.gameMode === "no-t") return `no-t:${this.levelId}`;
+    return this.levelId;
   }
 
   connectStorage(storage) {
@@ -169,11 +180,15 @@ export class GameStore {
     if (len === 1) return 0;
 
     const unsolvedIndexes = levelsForMode
-      .map((level, index) =>
-        this.progress.completed[this.gameMode === "no-i" ? `no-i:${level.id}` : level.id]
-          ? -1
-          : index,
-      )
+      .map((level, index) => {
+        const key =
+          this.gameMode === "no-i"
+            ? `no-i:${level.id}`
+            : this.gameMode === "no-t"
+              ? `no-t:${level.id}`
+              : level.id;
+        return this.progress.completed[key] ? -1 : index;
+      })
       .filter((index) => index >= 0 && index !== this.currentLevelIndex);
     if (unsolvedIndexes.length > 0) {
       return unsolvedIndexes[Math.floor(Math.random() * unsolvedIndexes.length)];
@@ -212,7 +227,13 @@ export class GameStore {
   }
 
   toggleGameMode() {
-    this.gameMode = this.gameMode === "standard" ? "no-i" : "standard";
+    if (this.gameMode === "no-i") {
+      this.gameMode = "standard";
+    } else if (this.gameMode === "standard") {
+      this.gameMode = "no-t";
+    } else {
+      this.gameMode = "no-i";
+    }
     this.currentLevelIndex = 0;
     this.draggedPiece = null;
     this.hoveredCell = null;
@@ -225,6 +246,7 @@ export class GameStore {
     this.shakingPieces = [];
     this.initLevel();
   }
+
 
   // Trigger the win celebration for the current puzzle.
   handleWin() {
